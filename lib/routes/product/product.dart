@@ -1,21 +1,31 @@
+import 'package:doan_mobile/routes/models/producttype.dart';
+
 import 'package:flutter/material.dart';
-import '../home/test.dart';
+
 import '../API/sanpham.dart';
 import '../models/product.dart';
 import 'product_detail.dart';
 
 class PageProduct extends StatefulWidget {
-  const PageProduct({Key? key}) : super(key: key);
+  //const PageProduct({Key? key}) : super(key: key);
   //final int product;
   // ignore: use_key_in_widget_constructors
   //const PageProduct({ required this.product}):super();
+  final DanhMuc producttype;
+
+  // ignore: use_key_in_widget_constructors
+   const PageProduct({required this.producttype});
+
+  
 
   @override
   ProductHome createState() => ProductHome();
 }
 
 class ProductHome extends State<PageProduct> {
-  Future<List<Product>> listSanPham = fetchPostSanPham();
+
+  //Future<List<Product>> listSanPham = fetchPostSanPham();
+
   var containerchude = Container(
     height: 40,
     decoration: BoxDecoration(
@@ -46,6 +56,9 @@ class ProductHome extends State<PageProduct> {
 
   @override
   Widget build(BuildContext context) {
+   /* var product1 = Provider.of<ProductProvider>(context, listen: false);
+   pro */
+    
     sanpham(AsyncSnapshot abc) {
       return Wrap(
         children: List.generate(abc.data.length, (index) {
@@ -57,7 +70,7 @@ class ProductHome extends State<PageProduct> {
                       builder: (_) => PageDetail(product: abc.data[index])));
             },
             child: Card(
-              color: Colors.pink[50],
+              color: Colors.white,
               elevation: 5,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -105,7 +118,7 @@ class ProductHome extends State<PageProduct> {
                       color: Colors.pink,
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 30),
                 ],
               ),
             ),
@@ -113,6 +126,7 @@ class ProductHome extends State<PageProduct> {
         }),
       );
     }
+    
 
     var listView = ListView(children: [
       const SizedBox(height: 20),
@@ -120,7 +134,7 @@ class ProductHome extends State<PageProduct> {
       const SizedBox(height: 20),
       Center(
         child: FutureBuilder<List<Product>>(
-          future: listSanPham,
+          future: fetchPostSanPham(widget.producttype.id),
           builder: (context, abc) {
             if (abc.hasData) {
               return sanpham(abc);
@@ -139,7 +153,61 @@ class ProductHome extends State<PageProduct> {
       },
       child: Scaffold(
         backgroundColor: Colors.pink.shade50,
-        appBar: appBar2,
+        appBar: AppBar(
+      backgroundColor: Colors.pink.shade300,
+      centerTitle: false,
+      automaticallyImplyLeading: false,
+      title: Container(
+        decoration: BoxDecoration(
+            color: Colors.pink.shade100,
+            borderRadius: BorderRadius.circular(30),
+            boxShadow: const [
+              BoxShadow(
+                offset: Offset(0, 10),
+                blurRadius: 50,
+                color: Colors.pink,
+              ),
+            ]),
+        child: TextField(
+          readOnly: true,
+          onTap: (){
+            Navigator.pushNamed(context, 'search');
+          },
+          decoration: InputDecoration(
+            enabledBorder: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            contentPadding: const EdgeInsets.only(top: 14),
+            border: const OutlineInputBorder(),
+            prefixIcon: IconButton(
+              icon: const Icon(
+                Icons.search,
+              ),
+              iconSize: 30,
+              color: Colors.black,
+              onPressed: () {
+
+              },
+            ),
+            hintText: 'search',
+            //suffixIcon: Icons.search,
+          ),
+        ),
+      ),
+      actions: [
+        IconButton(
+          icon: const Icon(
+            Icons.shopping_cart,
+          ),
+          iconSize: 30,
+          color: Colors.white,
+          splashColor: Colors.pink,
+          onPressed: () {
+            Navigator.pushNamed(context, '/cart');
+            
+          },
+        ),
+      ],
+    ),
         body: listView,
         //bottomNavigationBar: bottomNavigationBar2,
       ),

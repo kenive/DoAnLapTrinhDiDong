@@ -20,15 +20,15 @@ class _MyHomePageState extends State<ScreenLoad>
     controller =AnimationController(vsync: this, duration: const Duration(seconds: 1));
     animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
     controller.repeat();
-    _load();
+    //_load();
     
     
   }
-  _load()async{
+  /* _load()async{
      
     await Future.delayed(const Duration(seconds: 3),(){ Navigator.pushNamed(context, '/second');});
   }
-
+ */
   @override
   // ignore: must_call_super
  /*  void dispose() {

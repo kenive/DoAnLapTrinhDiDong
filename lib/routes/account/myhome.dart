@@ -1,5 +1,10 @@
 import 'package:doan_mobile/routes/home/home.dart';
+
+import 'package:doan_mobile/routes/provider/providerlogin.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+
 
 class MyHome extends StatefulWidget {
   const MyHome({Key? key}) : super(key: key);
@@ -8,8 +13,28 @@ class MyHome extends StatefulWidget {
 }
 
 class MyHomePage extends State<MyHome> {
+ 
+
+//TextEditingController txtds=TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+   
+    
+  }
+
+   
+  
+
+
   @override
   Widget build(BuildContext context) {
+    var a = Provider.of<LoginProvider>(context, listen: false);
+     /* if(a.acc!.fullName! == "")
+     {
+       print('cc');
+     } */
     container(String a) {
       return Container(
         height: 40,
@@ -40,35 +65,33 @@ class MyHomePage extends State<MyHome> {
       );
     }
 
-    row(String a,String b) {
+    row(String a, String b) {
       return Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-               Text(
-                a,
-                style: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "Times New Roman",
-                  color: Colors.pinkAccent,
-                ),
-              ),
-              Container(
-                height: 50,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Text(
+            a,
+            style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              fontFamily: "Times New Roman",
+              color: Colors.pinkAccent,
+            ),
+          ),
+          Container(
+            height: 50,
             width: 50,
             decoration: BoxDecoration(
-              border:Border.all(
+              border: Border.all(
                 width: 1,
                 color: Colors.black,
-              ) ,
-              
-                //borderRadius: BorderRadius.circular(10),
+              ),
+
+              //borderRadius: BorderRadius.circular(10),
             ),
-            
             child: IconButton(
               onPressed: () {
                 Navigator.pushNamed(context, b);
-                
               },
               icon: const Icon(Icons.arrow_forward_ios),
               iconSize: 25,
@@ -77,8 +100,8 @@ class MyHomePage extends State<MyHome> {
             ),
             padding: const EdgeInsets.only(left: 5),
           ),
-            ],
-          );
+        ],
+      );
     }
 
     return Scaffold(
@@ -95,14 +118,14 @@ class MyHomePage extends State<MyHome> {
                 ),
                 margin: const EdgeInsets.fromLTRB(10, 20, 10, 0),
               ),
-              const Positioned(
+              Positioned(
                 top: 50,
                 left: 120,
-                child: Text(
-                  'Nguyễn Thị Nỡ',
-                  style: TextStyle(
+                child: Text(a.acc!.fullName!,
+                 //error == "null" ? 'cc':'cl' ,
+                  style: const TextStyle(
                     fontFamily: 'Times New Roman',
-                    fontSize: 15,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
@@ -115,7 +138,7 @@ class MyHomePage extends State<MyHome> {
                   'Thành Viên',
                   style: TextStyle(
                     fontFamily: 'Times New Roman',
-                    fontSize: 10,
+                    fontSize: 13,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
@@ -131,7 +154,9 @@ class MyHomePage extends State<MyHome> {
                   iconSize: 30,
                   color: Colors.black,
                   splashColor: Colors.orange,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/cart');
+                  },
                 ),
               ),
             ],
@@ -141,7 +166,7 @@ class MyHomePage extends State<MyHome> {
           ),
           container('Đơn Hàng'),
           const SizedBox(height: 40),
-          row('Xem lịch sử mua hàng', '/setting'),
+          row('Xem lịch sử mua hàng', 'invoice'),
           const SizedBox(height: 40),
           container('Thông Tin'),
           const SizedBox(height: 40),
@@ -149,18 +174,16 @@ class MyHomePage extends State<MyHome> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             // ignore: deprecated_member_use
-           label: 'Home',
+            label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            // ignore: deprecated_member_use
-            label: 'Tôi'
-          ),
+              icon: Icon(Icons.person),
+              // ignore: deprecated_member_use
+              label: 'Tôi'),
         ],
         backgroundColor: Colors.pink,
         selectedItemColor: Colors.blue,
@@ -170,11 +193,9 @@ class MyHomePage extends State<MyHome> {
             context,
             PageRouteBuilder(pageBuilder: (context, animation, secon) {
               if (index == 0) {
-                
                 return const Home();
               }
               if (index == 1) {
-                
                 return const MyHome();
               }
               return const MyHome();

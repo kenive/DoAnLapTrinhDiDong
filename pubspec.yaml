@@ -35,6 +35,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   http: ^0.13.4
+  shared_preferences: ^2.0.12
+  form_field_validator: ^1.1.0
+  provider: ^6.0.2
 
 dev_dependencies:
   flutter_test:
@@ -63,14 +66,42 @@ flutter:
   - images/logo.png
   - images/logohoa.png
   - images/logohoa1.png
-  - images/chuc_mung/hoachucmung1.jpg
-  - images/chuc_mung/hoachucmung4.jpg
-  - images/chia_buon/hoachiabuon1.jpg
-  - images/hoa_cuoi/baby.jpg
-  - images/khai_truong/hoakhaitruong1.jpg
-  - images/lang_man/cuc.jpg
+  - images/chuc_mung/hoachucmung5.jpg
+  - images/khai_truong/hoakhaitruong5.jpg
+  - images/chia_buon/hoachiabuon2.jpg
+  - images/chia_buon/hoachiabuon3.jpg
+  - images/chia_buon/hoachiabuon4.jpg
+  - images/chia_buon/hoachiabuon5.jpg
+  - images/lang_man/roseBigSize.jpg
+  - images/lang_man/tulipyellow.jpg
   - images/lang_man/hoahong.jpg
+  - images/chuc_mung/hoachucmung12.jpg
+  - images/chuc_mung/hoachucmung9.jpg
+  - images/chuc_mung/hoachucmung8.jpg
+  - images/khai_truong/hoakhaitruong8.jpg
+  - images/khai_truong/hoakhaitruong6.jpg
+  - images/khai_truong/hoakhaitruong5.jpg
+  - images/khai_truong/hoakhaitruong4.jpg
+  - images/hoa_cuoi/maudonhongphan.jpg
+  - images/khai_truong/hoakhaitruong10.jpg
+  - images/hoa_cuoi/lantrang.jpg
+  - images/hoa_cuoi/huongduong.jpg
+  - images/hoa_cuoi/RoseMixBaby.jpg
+  - images/hoa_cuoi/RosePink.jpg
+  - images/sinh_nhat/01.jpg
+  - images/sinh_nhat/roseHappy.jpg
+  - images/sinh_nhat/08.jpg
+  - images/sinh_nhat/07.jpg
+  - images/sinh_nhat/05.jpg
+  - images/chia_buon/hoachiabuon1.jpg
+  - images/chuc_mung/hoachucmung4.jpg
+  - images/hoa_cuoi/baby.jpg
+  - images/khai_truong/hoakhaitruong3.jpg
+  - images/lang_man/roseOrange.jpg
+  - images/lang_man/rosepurple.jpg
   - images/sinh_nhat/babyHappy.jpg
+
+  
   - images/banner/banner1.jpg
   - images/banner/banner2.jpg
   - images/banner/banner3.jpg

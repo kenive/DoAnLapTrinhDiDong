@@ -6,7 +6,8 @@ class Product {
   final String imageUrl;
   final int idproducttype;
   final int price;
-  //final int status;
+  final int news;
+  final int status;
 
   Product({
     required this.id,
@@ -16,28 +17,37 @@ class Product {
     required this.quantily,
     required this.idproducttype,
     required this.price,
+    required this.status,
+    required this.news
     
   });
 
   Product.fromJson(Map<String, dynamic> json)
       : id = json['id'],
-        name = json['tensanpham'],
-        description = json['mota'],
-        imageUrl = json['hinh'],
-        quantily = json['soluong'],
-        idproducttype = json['idloaisanpham'],
-        price = json['gia'];
+        name = json['name'],
+        description = json['description'],
+        imageUrl = json['image'],
+        quantily = json['stock'],
+        idproducttype = json['productTypeid'],
+        price = json['price'],
+        status = json['status'],
+        news = json['new'];
         
 
   Map<String, dynamic> toJson() => {
         'id': id,
-        'tensanpham': name,
-        'mota': description,
-        'hinh': imageUrl,
-        'soluong': quantily,
-        'idloaisanpham': idproducttype,
-        'gia': price,
+        'name': name,
+        'description': description,
+        'image': imageUrl,
+        'stock': quantily,
+        'productTypeid': idproducttype,
+        'price': price,
+        'status': status,
+        'new': news,
        
       };
 }
+
+
+
 

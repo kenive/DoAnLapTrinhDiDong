@@ -1,4 +1,8 @@
+import 'package:doan_mobile/routes/provider/providercart.dart';
+import 'package:doan_mobile/routes/provider/providerlogin.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 
 class PageSetting extends StatefulWidget {
   const PageSetting({Key? key}) : super(key: key);
@@ -67,32 +71,67 @@ class Page extends State<PageSetting> {
               ),
               Container(
                 height: 50,
-            width: 50,
-            decoration: BoxDecoration(
-              border:Border.all(
-                width: 1,
-                color: Colors.black,
-              ) ,
-              
-                //borderRadius: BorderRadius.circular(10),
-            ),
-            
-            child: IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/profile');
-                
-              },
-              icon: const Icon(Icons.arrow_forward_ios),
-              iconSize: 25,
-              splashColor: Colors.pink[200],
-              alignment: Alignment.center,
-            ),
-            padding: const EdgeInsets.only(left: 5),
-          ),
+                width: 50,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 1,
+                    color: Colors.black,
+                  ),
+                ),
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/editprofile');
+                  },
+                  icon: const Icon(Icons.arrow_forward_ios),
+                  iconSize: 25,
+                  splashColor: Colors.pink[200],
+                  alignment: Alignment.center,
+                ),
+                padding: const EdgeInsets.only(left: 5),
+              ),
+             
             ],
           ),
           const SizedBox(
-            height: 200,
+            height: 30,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              const Text(
+                'Đổi mật khẩu',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "Times New Roman",
+                  color: Colors.pinkAccent,
+                ),
+              ),
+              Container(
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 1,
+                    color: Colors.black,
+                  ),
+                ),
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/editpassword');
+                  },
+                  icon: const Icon(Icons.arrow_forward_ios),
+                  iconSize: 25,
+                  splashColor: Colors.pink[200],
+                  alignment: Alignment.center,
+                ),
+                padding: const EdgeInsets.only(left: 5),
+              ),
+             
+            ],
+          ),
+          const SizedBox(
+            height: 100,
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(70, 20, 70, 20),
@@ -113,7 +152,15 @@ class Page extends State<PageSetting> {
                 'Đăng Xuất',
                 style: TextStyle(fontSize: 28, color: Colors.black),
               ),
-              onPressed: () {},
+              onPressed: () {
+                var a = Provider.of<LoginProvider>(context, listen: false);
+                a.acc = null;
+                var b = Provider.of<CartProvider>(context, listen: false);
+                b.lstCartItem=[];
+                
+               
+                Navigator.pushNamed(context, '/login');
+              },
             ),
           ),
         ],

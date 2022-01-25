@@ -1,4 +1,7 @@
+import 'package:doan_mobile/routes/provider/providercart.dart';
+import 'package:doan_mobile/routes/provider/providerlogin.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../models/product.dart';
 
 class PageDetail extends StatefulWidget {
@@ -59,7 +62,7 @@ class Detail extends State<PageDetail> {
                   boxShadow: [boxShadow2],
                 ),
                 height: 40,
-                width: 150,
+                width: 180,
               ),
               Positioned(
                 top: 10,
@@ -139,7 +142,6 @@ class Detail extends State<PageDetail> {
               onPressed: () {
                 setState(() {
                   quality++;
-                  
                 });
               },
               icon: const Icon(Icons.add),
@@ -189,7 +191,7 @@ class Detail extends State<PageDetail> {
           height: 30,
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 30,bottom: 80),
+          padding: const EdgeInsets.only(left: 30, bottom: 80),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -224,62 +226,58 @@ class Detail extends State<PageDetail> {
       ],
     );
     return Scaffold(
-      backgroundColor: Colors.pink[50],
-      appBar: AppBar(
-        backgroundColor: Colors.pink[400],
-        title: const Text('Chi tiết sản phẩm'),
-      ),
-      body: listView,
-      // ignore: avoid_unnecessary_containers
-      bottomSheet: 
-       
-      Row(
-        
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          
-          Container(
-        height: 50,
-        width: 103,
-        decoration:const BoxDecoration(
-          
+        backgroundColor: Colors.pink[50],
+        appBar: AppBar(
+          backgroundColor: Colors.pink[400],
+          title: const Text('Chi tiết sản phẩm'),
         ),
-        // ignore: deprecated_member_use
-        child: FlatButton(
-          color: Colors.green[700],
-          onPressed: () {},
-          child: const Icon(Icons.shopping_cart,size: 30,color: Colors.white,
-           
-          )
-        ),
-      ),
-      Container(
-        height: 50,
-        width: 308,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(70)
-        ),
-        // ignore: deprecated_member_use
-        child: FlatButton(
-          color: Colors.red[800],
-          onPressed: () {},
-          
-          child: const Text('Mua ngay',
-          
-          style:TextStyle(
-            color: Colors.white,
-           fontFamily: 'Times New Roman',
-            fontSize: 20
-          
-          ),
-          
-          
-          ),
-        ),
-      ),
-
-        ],
-      )
-    );
+        body: listView,
+        // ignore: avoid_unnecessary_containers
+        bottomSheet: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Container(
+              height: 50,
+              width: 103,
+              decoration: const BoxDecoration(),
+              // ignore: deprecated_member_use
+              child: FlatButton(
+                  color: Colors.green[700],
+                  onPressed: () {
+                    var cart =
+                        Provider.of<CartProvider>(context, listen: false);
+                    var accountid =
+                        Provider.of<LoginProvider>(context, listen: false);
+                    cart.addCart(accountid.acc!.id, widget.product.id, quality);
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text('Đã thêm vào giỏ hàng'),
+                    ));
+                  },
+                  child: const Icon(
+                    Icons.shopping_cart,
+                    size: 30,
+                    color: Colors.white,
+                  )),
+            ),
+            Container(
+              height: 50,
+              width: 308,
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(70)),
+              // ignore: deprecated_member_use
+              child: FlatButton(
+                color: Colors.red[800],
+                onPressed: () {},
+                child: const Text(
+                  'Mua ngay',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Times New Roman',
+                      fontSize: 20),
+                ),
+              ),
+            ),
+          ],
+        ));
   }
 }
