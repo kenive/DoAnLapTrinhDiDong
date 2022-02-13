@@ -14,16 +14,13 @@ class PageProduct extends StatefulWidget {
   final DanhMuc producttype;
 
   // ignore: use_key_in_widget_constructors
-   const PageProduct({required this.producttype});
-
-  
+  const PageProduct({required this.producttype});
 
   @override
   ProductHome createState() => ProductHome();
 }
 
 class ProductHome extends State<PageProduct> {
-
   //Future<List<Product>> listSanPham = fetchPostSanPham();
 
   var containerchude = Container(
@@ -56,9 +53,9 @@ class ProductHome extends State<PageProduct> {
 
   @override
   Widget build(BuildContext context) {
-   /* var product1 = Provider.of<ProductProvider>(context, listen: false);
+    /* var product1 = Provider.of<ProductProvider>(context, listen: false);
    pro */
-    
+
     sanpham(AsyncSnapshot abc) {
       return Wrap(
         children: List.generate(abc.data.length, (index) {
@@ -79,10 +76,10 @@ class ProductHome extends State<PageProduct> {
                   Hero(
                     tag: abc.data[index].id.toString(),
                     child: Container(
-                      width: 260,
-                      height: 260,
+                      width: 230,
+                      height: 230,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(120),
+                        //borderRadius: BorderRadius.circular(120),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.withOpacity(0.5),
@@ -96,7 +93,7 @@ class ProductHome extends State<PageProduct> {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      margin: const EdgeInsets.fromLTRB(30, 20, 30, 20),
+                      margin: const EdgeInsets.fromLTRB(20, 10, 20, 20),
                     ),
                   ),
                   Text(
@@ -126,7 +123,6 @@ class ProductHome extends State<PageProduct> {
         }),
       );
     }
-    
 
     var listView = ListView(children: [
       const SizedBox(height: 20),
@@ -154,60 +150,73 @@ class ProductHome extends State<PageProduct> {
       child: Scaffold(
         backgroundColor: Colors.pink.shade50,
         appBar: AppBar(
-      backgroundColor: Colors.pink.shade300,
-      centerTitle: false,
-      automaticallyImplyLeading: false,
-      title: Container(
-        decoration: BoxDecoration(
-            color: Colors.pink.shade100,
-            borderRadius: BorderRadius.circular(30),
-            boxShadow: const [
-              BoxShadow(
-                offset: Offset(0, 10),
-                blurRadius: 50,
-                color: Colors.pink,
-              ),
-            ]),
-        child: TextField(
-          readOnly: true,
-          onTap: (){
-            Navigator.pushNamed(context, 'search');
-          },
-          decoration: InputDecoration(
-            enabledBorder: InputBorder.none,
-            focusedBorder: InputBorder.none,
-            contentPadding: const EdgeInsets.only(top: 14),
-            border: const OutlineInputBorder(),
-            prefixIcon: IconButton(
-              icon: const Icon(
-                Icons.search,
-              ),
-              iconSize: 30,
-              color: Colors.black,
-              onPressed: () {
-
+          backgroundColor: Colors.pink.shade300,
+          centerTitle: false,
+          automaticallyImplyLeading: false,
+          title: Container(
+            decoration: BoxDecoration(
+                color: Colors.pink.shade100,
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: const [
+                  BoxShadow(
+                    offset: Offset(0, 10),
+                    blurRadius: 50,
+                    color: Colors.pink,
+                  ),
+                ]),
+            child: TextField(
+              readOnly: true,
+              onTap: () {
+                Navigator.pushNamed(context, 'search');
               },
+              decoration: InputDecoration(
+                enabledBorder: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                contentPadding: const EdgeInsets.only(top: 14),
+                border: const OutlineInputBorder(),
+                prefixIcon: IconButton(
+                  icon: const Icon(
+                    Icons.search,
+                  ),
+                  iconSize: 30,
+                  color: Colors.black,
+                  onPressed: () {},
+                ),
+                hintText: 'search',
+                //suffixIcon: Icons.search,
+              ),
             ),
-            hintText: 'search',
-            //suffixIcon: Icons.search,
           ),
+          actions: [
+           Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                color: Colors.red,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    offset: const Offset(3, 3),
+                    blurRadius: 4,
+                    spreadRadius: 1,
+                  )
+                ],
+              ),
+              child: IconButton(
+                icon: const Icon(
+                  Icons.shopping_cart,
+                ),
+                iconSize: 25,
+                color: Colors.white,
+                splashColor: Colors.pink,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/cart');
+                },
+              ),
+            ),
+          ],
         ),
-      ),
-      actions: [
-        IconButton(
-          icon: const Icon(
-            Icons.shopping_cart,
-          ),
-          iconSize: 30,
-          color: Colors.white,
-          splashColor: Colors.pink,
-          onPressed: () {
-            Navigator.pushNamed(context, '/cart');
-            
-          },
-        ),
-      ],
-    ),
         body: listView,
         //bottomNavigationBar: bottomNavigationBar2,
       ),

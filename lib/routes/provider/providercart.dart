@@ -6,12 +6,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class CartProvider extends ChangeNotifier {
-  String name1="";
-  String phone1="";
-  String address1="";
+  String name1 = "";
+  String phone1 = "";
+  String address1 = "";
   List<CartItem> lstCartItem = [];
   var total1 = 0;
-  
+
   Future<void> getItemCart(int id) async {
     List<CartItem> lstTmp = [];
     int tmpTotal = 0;
@@ -25,7 +25,7 @@ class CartProvider extends ChangeNotifier {
           lstTmp.add(CartItem.fromJson(item));
         });
         dynamic getTotal = object['total'];
-          tmpTotal = getTotal;
+        tmpTotal = getTotal;
       } catch (e) {
         //print(e);
       }
@@ -62,6 +62,7 @@ class CartProvider extends ChangeNotifier {
       //print('addcart faild');
     }
   }
+
   truCart(int accountid, int productid, int quantity) async {
     //List<CartItem> lstTmp = [];
     String url = "http://10.0.2.2:8000/api/remove";
@@ -93,30 +94,24 @@ class CartProvider extends ChangeNotifier {
     // ignore: unused_local_variable
     final response = await http.delete(Uri.parse(url), body: {
       'id': id.toString(),
-      
     });
-    if(response.statusCode==200){
-      try{
+    if (response.statusCode == 200) {
+      try {
         getItemCart(acc);
-    notifyListeners();
+        notifyListeners();
 
-      // ignore: empty_catches
-      }catch(e){
-
-      }
+        // ignore: empty_catches
+      } catch (e) {}
     }
-   
   }
-  void address(String name, String sdt, String dc ){
 
-  
+  void address(String name, String sdt, String dc) {
     // ignore: unnecessary_this
-    this.name1=name;
+    this.name1 = name;
     // ignore: unnecessary_this
-    this.address1=dc;
+    this.address1 = dc;
     // ignore: unnecessary_this
-    this.phone1=sdt;
+    this.phone1 = sdt;
     notifyListeners();
-
   }
 }

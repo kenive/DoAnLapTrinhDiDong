@@ -1,16 +1,18 @@
 class Invoice{
 
   final int id;
-  final DateTime ngaplap;
+  String ngaplap;
+  final String nameShopping;
   final String addresshoping;
   final String phoneshoping;
-  final double total;
+  final int? total;
   final int accountid;
   final int status;
 
   Invoice({
     required this.id,
     required this.ngaplap,
+    required this.nameShopping,
     required this.addresshoping,
     required this.phoneshoping,
     required this.total,
@@ -20,6 +22,7 @@ class Invoice{
   Invoice.fromJson(Map<String, dynamic> json)
       : id = json['id'],
         ngaplap=json['issuedDate'],
+        nameShopping=json['nameShopping'],
         addresshoping=json['addressShoping'],
         phoneshoping=json['phoneShoping'],
         total=json['total'],
@@ -29,6 +32,7 @@ class Invoice{
   Map<String, dynamic> toJson() => {
         'id': id,
         'issuedDate': ngaplap,
+        'nameShopping':nameShopping,
         'addressShoping': addresshoping,
         'phoneShoping': phoneshoping,
         'total': total,

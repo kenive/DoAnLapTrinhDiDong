@@ -1,11 +1,10 @@
-import 'package:doan_mobile/routes/API/search_sanpham.dart';
+import 'package:doan_mobile/routes/provider/search_sanpham.dart';
 import 'package:doan_mobile/routes/product/product_detail.dart';
 import 'package:doan_mobile/routes/provider/providerproduct.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import '../models/banner.dart';
-
 
 //import '../API/loaisanpham.dart';
 import '../product/product.dart';
@@ -20,7 +19,6 @@ class Home extends StatefulWidget {
 }
 
 class HomePage extends State<Home> with SingleTickerProviderStateMixin {
-  //Future<List<DanhMuc>> list = fetchPostLoai();
   // ignore: unused_field
   late TabController _tabController;
 
@@ -63,18 +61,6 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
       ),
     );
   }
-
-  /* Widget _tab(String a) {
-    return Tab(
-      child: Text(
-        a.toString(),
-        style: const TextStyle(
-          fontSize: 15,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    );
-  } */
 
   _movieSelector(int index) {
     return AnimatedBuilder(
@@ -151,82 +137,11 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
       ),
     );
 
-    //hiện ra các chủ để trong danh mục
-
-/*     wrap(AsyncSnapshot abc) {
-      return Wrap(
-        children: List.generate(abc.data.length, (index) {
-          return InkWell(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          PageProduct(producttype: abc.data[index])));
-            },
-            child: Card(
-              color: Colors.pink[50],
-              elevation: 0,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    width: 170,
-                    height: 170,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 3,
-                          blurRadius: 7,
-                          offset: const Offset(3, 2),
-                        ),
-                      ],
-                      image: DecorationImage(
-                        image: AssetImage(abc.data[index].imageUrl),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    margin: const EdgeInsets.fromLTRB(15, 20, 10, 20),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    abc.data[index].category,
-                    style: const TextStyle(
-                      fontFamily: 'Times New Roman',
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.pink,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
-        }),
-      );
-    } */
-
     var listView = ListView(children: [
       _container,
       chude('Chủ Đề'),
       Consumer<CategoryProvider>(builder: (context, categoty, child) {
-        return /* FutureBuilder(
-          future: categoty.getAllCategory(),
-          builder:
-              (BuildContext context, AsyncSnapshot<List<DanhMuc>> abc) {
-            if (abc.hasData) {
-              return wrap(abc);
-            } else if (abc.hasError) {
-               return Text("${abc.error}");
-            } else {
-              return const CircularProgressIndicator();
-            }
-          }); */
-            Wrap(
+        return Wrap(
           children: List.generate(danhmuc.lstDanhMuc.length, (index) {
             return InkWell(
               onTap: () {
@@ -310,18 +225,16 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
                           margin: const EdgeInsets.all(5),
                           height: 250,
                           width: 190,
-                         
                           decoration: BoxDecoration(
-                             color: Colors.white70,
-                             boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      offset: const Offset(3, 3),
-                                      blurRadius: 4,
-                                      spreadRadius: 1,
-                                    )
-                                  ],
-
+                            color: Colors.white70,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                offset: const Offset(3, 3),
+                                blurRadius: 4,
+                                spreadRadius: 1,
+                              )
+                            ],
                           ),
                           child: Column(
                             children: [
@@ -330,7 +243,6 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
                                 width: 150,
                                 height: 150,
                                 decoration: BoxDecoration(
-                                  
                                   borderRadius: BorderRadius.circular(120),
                                   boxShadow: [
                                     BoxShadow(
@@ -426,16 +338,32 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
             ),
           ),
           actions: [
-            IconButton(
-              icon: const Icon(
-                Icons.shopping_cart,
+            Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                color: Colors.red,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    offset: const Offset(3, 3),
+                    blurRadius: 4,
+                    spreadRadius: 1,
+                  )
+                ],
               ),
-              iconSize: 30,
-              color: Colors.white,
-              splashColor: Colors.pink,
-              onPressed: () {
-                Navigator.pushNamed(context, '/cart');
-              },
+              child: IconButton(
+                icon: const Icon(
+                  Icons.shopping_cart,
+                ),
+                iconSize: 25,
+                color: Colors.white,
+                splashColor: Colors.pink,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/cart');
+                },
+              ),
             ),
           ],
         ),

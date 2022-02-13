@@ -4,8 +4,6 @@ import 'package:doan_mobile/routes/provider/providerlogin.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
-
 class MyHome extends StatefulWidget {
   const MyHome({Key? key}) : super(key: key);
   @override
@@ -13,42 +11,30 @@ class MyHome extends StatefulWidget {
 }
 
 class MyHomePage extends State<MyHome> {
- 
-
 //TextEditingController txtds=TextEditingController();
 
   @override
   void initState() {
     super.initState();
-   
-    
   }
-
-   
-  
-
 
   @override
   Widget build(BuildContext context) {
     var a = Provider.of<LoginProvider>(context, listen: false);
-     /* if(a.acc!.fullName! == "")
-     {
-       print('cc');
-     } */
     container(String a) {
       return Container(
         height: 40,
         decoration: BoxDecoration(
           color: Colors.pink.shade100,
           borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.white.withOpacity(0.5),
-              offset: const Offset(0, 5),
-              blurRadius: 7,
-              spreadRadius: 3,
-            ),
-          ],
+           boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.5),
+                                      offset: const Offset(3, 2),
+                                      blurRadius: 4,
+                                      spreadRadius: 1,
+                                    )
+                                  ],
         ),
         margin: const EdgeInsets.fromLTRB(10, 0, 250, 0),
         child: Center(
@@ -82,12 +68,16 @@ class MyHomePage extends State<MyHome> {
             height: 50,
             width: 50,
             decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
               border: Border.all(
+
                 width: 1,
                 color: Colors.black,
+              
               ),
 
               //borderRadius: BorderRadius.circular(10),
+              
             ),
             child: IconButton(
               onPressed: () {
@@ -115,14 +105,22 @@ class MyHomePage extends State<MyHome> {
                 decoration: BoxDecoration(
                   color: Colors.pink[200],
                   borderRadius: BorderRadius.circular(10),
+                   boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.5),
+                                      offset: const Offset(3, 3),
+                                      blurRadius: 4,
+                                      spreadRadius: 1,
+                                    )
+                                  ],
                 ),
                 margin: const EdgeInsets.fromLTRB(10, 20, 10, 0),
               ),
               Positioned(
                 top: 50,
-                left: 120,
-                child: Text(a.acc!.fullName!,
-                 //error == "null" ? 'cc':'cl' ,
+                left: 100,
+                child: Text(
+                  a.acc!.fullName!,
                   style: const TextStyle(
                     fontFamily: 'Times New Roman',
                     fontSize: 20,
@@ -132,8 +130,8 @@ class MyHomePage extends State<MyHome> {
                 ),
               ),
               const Positioned(
-                top: 80,
-                left: 120,
+                top: 90,
+                left: 100,
                 child: Text(
                   'Thành Viên',
                   style: TextStyle(
@@ -145,19 +143,38 @@ class MyHomePage extends State<MyHome> {
                 ),
               ),
               Positioned(
-                top: 45,
-                right: 30,
-                child: IconButton(
+                top: 50,
+                right: 40,
+                child: Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: Colors.pink,
+                    borderRadius: BorderRadius.circular(50),
+                    boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.5),
+                                      offset: const Offset(3, 3),
+                                      blurRadius: 4,
+                                      spreadRadius: 1,
+                                    )
+                                  ],
+                    
+                  ),
+                   child: IconButton(
                   icon: const Icon(
                     Icons.shopping_cart,
                   ),
                   iconSize: 30,
-                  color: Colors.black,
+                  color: Colors.white,
                   splashColor: Colors.orange,
                   onPressed: () {
                     Navigator.pushNamed(context, '/cart');
                   },
+                ), 
                 ),
+
+                
               ),
             ],
           ),
@@ -170,7 +187,7 @@ class MyHomePage extends State<MyHome> {
           const SizedBox(height: 40),
           container('Thông Tin'),
           const SizedBox(height: 40),
-          row('Thiết lập tài khoản', '/setting'),
+          row('Thiết lập tài khoản      ', '/setting'),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -185,7 +202,7 @@ class MyHomePage extends State<MyHome> {
               // ignore: deprecated_member_use
               label: 'Tôi'),
         ],
-        backgroundColor: Colors.pink,
+        backgroundColor: Colors.pink[300],
         selectedItemColor: Colors.blue,
         currentIndex: 1,
         onTap: (index) {

@@ -1,9 +1,7 @@
-
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 import '../provider/providerlogin.dart';
-
 
 class PageLogin extends StatefulWidget {
   const PageLogin({Key? key}) : super(key: key);
@@ -87,7 +85,7 @@ class Login extends State<PageLogin> {
                           ),
                         ),
                         const SizedBox(
-                          height: 40,
+                          height: 30,
                         ),
 
                         Container(
@@ -144,36 +142,41 @@ class Login extends State<PageLogin> {
                           padding: const EdgeInsets.symmetric(
                               vertical: 12, horizontal: 50),
                           color: Colors.red,
-                          onPressed: () async{
+                          onPressed: () async {
                             if (txtTenDangNhap.text.isNotEmpty &&
                                 txtMatKhau.text.isNotEmpty) {
-                              //login();
+                              if (txtTenDangNhap.text.length >= 6 &&
+                                  txtMatKhau.text.length >= 6) {
+                                var a = Provider.of<LoginProvider>(context,
+                                    listen: false);
 
-                              var a=Provider.of<LoginProvider>(context,listen: false);
+                                var kq = await a.fethlogin(
+                                    txtTenDangNhap.text, txtMatKhau.text);
 
-                              var kq =await a.fethlogin(txtTenDangNhap.text, txtMatKhau.text);
-                              
-                              // ignore: unnecessary_null_comparison
-                              if(kq != null )
-                              {
-                                kq=null;
-                                
-                                Navigator.pushNamed(context, '/second');
-                                
-                              
-
+                                // ignore: unnecessary_null_comparison
+                                if (kq != null) {
+                                  kq = null;
+                                  Navigator.pushNamed(context, '/second');
+                                } else {
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(const SnackBar(
+                                    content: Text('Đăng nhập thất bại'),
+                                  ));
+                                }
+                              } else if (txtTenDangNhap.text.length < 6 &&
+                                  txtMatKhau.text.length < 6) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  content: Text(
+                                      'Mật khẩu hoặc tên đăng nhập không được dưới 6 kí tự'),
+                                ));
                               }
-                              else{
-                                ScaffoldMessenger.of(context).showSnackBar( const SnackBar(content: Text('Đăng nhập thất bại'),));
-
-                              }
-                              /* if(LoginProvider().getAccount(txtTenDangNhap.text, txtMatKhau.text)){
-                               Navigator.pushNamed(context, '/second');
-                             }else{
-                               ScaffoldMessenger.of(context).showSnackBar( const SnackBar(content: Text('Vui Lòng nhập đủ thông tin '),));
-
-                             } */
-
+                            } else {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(const SnackBar(
+                                content: Text(
+                                    'Vui lòng nhập đủ tên đăng nhập và mật khẩu'),
+                              ));
                             }
                           },
                           child: const Text(
@@ -216,6 +219,4 @@ class Login extends State<PageLogin> {
       ),
     );
   }
-
- 
 }

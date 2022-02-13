@@ -36,6 +36,7 @@ class _PagePayState extends State<PagePay> {
      var invoi = Provider.of<InvoiceProvider>(context, listen: false);
      // ignore: unused_local_variable
      var acc = Provider.of<LoginProvider>(context, listen: false);
+     cart.total1;
 
 
     return Scaffold(
@@ -387,8 +388,8 @@ class _PagePayState extends State<PagePay> {
                       content: Text('Vui lòng nhập đầy đủ địa chỉ nhận hàng'),
                     ));
                 }else{
-                 /*  invoi.invoice(cart.address1, cart.phone1, cart.total1.toDouble(), acc.acc!.id, 1);
-                  Navigator.pushNamed(context, 'paystatus'); */
+                  invoi.invoice(cart.name1,cart.address1, cart.phone1, cart.total1.toDouble(), acc.acc!.id, 1);
+                  Navigator.pushNamed(context, 'paystatus');
                   
                 }
                 

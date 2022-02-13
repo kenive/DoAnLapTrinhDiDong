@@ -24,7 +24,7 @@ class _PageInvoiceState extends State<PageInvoice> {
         bottom: const TabBar(
           tabs: [
             Text('Chờ Xác Nhận'),
-            Text('Chờ Lấy Hàng'),
+            Text('Đã lấy hàng'),
             Text('Đã Giao'),
             Text('Đã Hủy'),
           ],

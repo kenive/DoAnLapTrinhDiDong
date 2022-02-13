@@ -163,7 +163,9 @@ class Detail extends State<PageDetail> {
           child: Hero(
             tag: widget.product.id.toString(),
             child: Container(
-              height: 280,
+              height: 300,
+              //width: 200,
+             
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
@@ -267,7 +269,14 @@ class Detail extends State<PageDetail> {
               // ignore: deprecated_member_use
               child: FlatButton(
                 color: Colors.red[800],
-                onPressed: () {},
+                onPressed: () {
+                  var cart = Provider.of<CartProvider>(context, listen: false);
+                  var accountid =
+                      Provider.of<LoginProvider>(context, listen: false);
+                  cart.addCart(accountid.acc!.id, widget.product.id, quality);
+
+                  Navigator.popAndPushNamed(context, 'pay');
+                },
                 child: const Text(
                   'Mua ngay',
                   style: TextStyle(

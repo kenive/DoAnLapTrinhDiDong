@@ -1,6 +1,6 @@
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
-
+import 'dart:math';
 class ScreenLoad extends StatefulWidget {
   const ScreenLoad({Key? key}) : super(key: key);
 
@@ -10,33 +10,23 @@ class ScreenLoad extends StatefulWidget {
 
 class _MyHomePageState extends State<ScreenLoad>
     with SingleTickerProviderStateMixin {
-  late Animation<double> animation;
-  late AnimationController controller;
+ 
+  late AnimationController controller1;
+  late Animation<double>  flip;
   
   @override
   void initState() {
     super.initState();
     
-    controller =AnimationController(vsync: this, duration: const Duration(seconds: 1));
-    animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
-    controller.repeat();
-    //_load();
-    
+
+    controller1 =
+        AnimationController(duration:const Duration(seconds: 3), vsync: this);
+
+    flip = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+        parent: controller1, curve:const Interval(0.0, 0.5, curve: Curves.linear)));
+    controller1.repeat();
     
   }
-  /* _load()async{
-     
-    await Future.delayed(const Duration(seconds: 3),(){ Navigator.pushNamed(context, '/second');});
-  }
- */
-  @override
-  // ignore: must_call_super
- /*  void dispose() {
-    super.dispose();
-   
-    controller.dispose();
-    
-  } */
 
   @override
   Widget build(BuildContext context) {
@@ -51,46 +41,77 @@ class _MyHomePageState extends State<ScreenLoad>
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
+                  Colors.pink.shade50,
                   Colors.pink.shade100,
-                  Colors.pink.shade400,
-                  Colors.pink.shade200,
+                  Colors.pink.shade50,
                   Colors.pink.shade100,
                 ],
               ),
             ),
           ),
-          Column(
+          Center(child: 
+          Column( 
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(0),
-                child: Image.asset('images/logo.png'),
-              ),
-              const SizedBox(height: 30,),
-              Container(
+              Transform(
+                transform: Matrix4.identity()
+                ..setEntry(3, 2, 0.005)
+                ..rotateY(2*pi*flip.value),
+                alignment: Alignment.center,
+                child: Container(
                 width: 250,
                 height: 60,
                 decoration: BoxDecoration(
                   color: Colors.pink.shade100,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: Center(
+                child:RotationTransition(
+                  turns: flip,
+                   child:Center(
                   child: Text(
-                  'SHOP HOA NVN',
+                  'KEN SHOP',
                   style: TextStyle(
                     //color: Colors.pink,
-                    fontSize: 20,
+                    fontSize: 25,
                     fontWeight: FontWeight.bold,
                     foreground: Paint()
                       ..style = PaintingStyle.stroke
                       ..strokeWidth = 2
                       ..color = Colors.pink.shade700,
                   ),
-                ),),
+                ),), ),
+
+                ),
+                
+                ),
+              
+                const SizedBox(height: 30,),
+              const Text('CHÀO MỪNG QUÝ KHÁCH',
+              style: TextStyle(
+                fontSize:20,
+                color:Colors.black,
+                fontWeight:  FontWeight.bold
               ),
-              const SizedBox(height: 20,),
-              Center(
+              ),
+              const SizedBox(height: 30,),
+              Container(
+                height: 300,
+                decoration:const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('images/abc.jpg'),
+                    fit: BoxFit.contain
+                  )
+                ),
+
+
+              ),
+           
+              
+               
+            
+              /* Center(
                 child: RotationTransition(
+                  alignment: Alignment.topCenter,
                   turns: animation,
                   child: SizedBox(
                     width: 50,
@@ -98,9 +119,29 @@ class _MyHomePageState extends State<ScreenLoad>
                     child: Image.asset('images/logohoa1.png'),
                   ),
                 ),
-              ),
+              ), */
+              const SizedBox(height: 30,),
+              MaterialButton(
+                onPressed: (){
+                 Navigator.pushNamed(context, '/login');
+
+                },
+                minWidth: 200,
+                height: 50,
+                color: Colors.red,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+                child: const Text('Đăng Nhập',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight:FontWeight.bold
+                ),),
+                ),
             ],
           )
+          
+          ,)
+          
         ],
       ),
     );

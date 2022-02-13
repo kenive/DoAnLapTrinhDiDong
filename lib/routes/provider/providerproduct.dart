@@ -7,7 +7,6 @@ import 'package:http/http.dart' as http;
 
 class ProductProvider extends ChangeNotifier {
   List<Product> lstProduct = [];
-  
 
   Future<void> getNewProdct(int id) async {
     final reponse =
@@ -27,7 +26,8 @@ class ProductProvider extends ChangeNotifier {
 
     notifyListeners();
   }
-List<Product> lstProduct1 = [];
+
+  List<Product> lstProduct1 = [];
   Future<void> getProdctId(int id) async {
     final reponse =
         await http.get(Uri.parse("http://10.0.2.2:8000/api/sanpham/loai/$id"));
@@ -41,10 +41,9 @@ List<Product> lstProduct1 = [];
         });
         lstProduct1 = tmp1;
 
-    notifyListeners();
+        notifyListeners();
         // ignore: empty_catches
       } catch (e) {}
     }
-    
   }
 }

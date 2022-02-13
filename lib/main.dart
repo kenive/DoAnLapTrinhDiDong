@@ -1,8 +1,8 @@
-
-import 'package:doan_mobile/routes/API/search_sanpham.dart';
+import 'package:doan_mobile/routes/provider/search_sanpham.dart';
 import 'package:doan_mobile/routes/checkout/pay.dart';
 import 'package:doan_mobile/routes/checkout/pay_status.dart';
 import 'package:doan_mobile/routes/invoice/invoice.dart';
+import 'package:doan_mobile/routes/invoice/invoice_detail.dart';
 import 'package:doan_mobile/routes/provider/providerinvoice.dart';
 import 'package:doan_mobile/routes/provider/providerlogin.dart';
 import 'package:doan_mobile/routes/provider/providerproduct.dart';
@@ -22,8 +22,8 @@ import 'routes/provider/providerlogin.dart';
 import 'routes/provider/providercart.dart';
 import 'routes/account/editpassword.dart';
 import 'routes/cart/homecart.dart';
+
 void main() {
-  
   runApp(const MyApp());
 }
 
@@ -32,43 +32,38 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MultiProvider(
-    providers: [
+    return MultiProvider(
+      providers: [
         //ChangeNotifierProvider(create: (_) => ProductProvider()),
         ChangeNotifierProvider(create: (_) => CategoryProvider()),
         ChangeNotifierProvider(create: (_) => LoginProvider()),
         ChangeNotifierProvider(create: (_) => CartProvider()),
         ChangeNotifierProvider(create: (_) => SearchApi()),
-         ChangeNotifierProvider(create: (_) => InvoiceProvider()),
-         ChangeNotifierProvider(create: (_) => ProductProvider()),
+        ChangeNotifierProvider(create: (_) => InvoiceProvider()),
+        ChangeNotifierProvider(create: (_) => ProductProvider()),
       ],
-    
-    child:  MaterialApp(
-      title: 'màn hình load',
-      initialRoute:'/login' ,
-      routes: {
-        '/': (context)=>const ScreenLoad(),
-        '/second': (context)=>const Home(),
-        '/myhome': (context)=>const MyHome(),
-        '/setting': (context)=>const PageSetting(),
-        '/profile': (context)=>const PageProFile(),
-        '/editprofile': (context)=>const EditProFile(),
-        '/login': (context)=>const PageLogin(),
-        '/register': (context)=>const PageRegister(),
-        '/editpassword': (context)=>const PageEditPw(),
-        '/cart': (context)=>const PageCart(),
-        'search' :(contex)=>const SearchScreen(),
-        'pay':(context)=>const PagePay(),
-        'paystatus':(context)=>const PageStatus(),
-        'invoice':(context)=>const PageInvoice(),
-      },
-      debugShowCheckedModeBanner: false,
-      
-     
-       
-    ),
+      child: MaterialApp(
+        title: 'màn hình load',
+        initialRoute: '/',
+        routes: {
+          '/': (context) => const ScreenLoad(),
+          '/second': (context) => const Home(),
+          '/myhome': (context) => const MyHome(),
+          '/setting': (context) => const PageSetting(),
+          '/profile': (context) => const PageProFile(),
+          '/editprofile': (context) => const EditProFile(),
+          '/login': (context) => const PageLogin(),
+          '/register': (context) => const PageRegister(),
+          '/editpassword': (context) => const PageEditPw(),
+          '/cart': (context) => const PageCart(),
+          'search': (contex) => const SearchScreen(),
+          'pay': (context) => const PagePay(),
+          'paystatus': (context) => const PageStatus(),
+          'invoice': (context) => const PageInvoice(),
+          'detail': (context) => const PageDetail(),
+        },
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }
-
-

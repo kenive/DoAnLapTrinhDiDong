@@ -61,11 +61,11 @@ class Register extends State<PageRegister> {
                   height: 450,
                   width: 350,
                   decoration: BoxDecoration(
-                    color: Colors.pink.shade200,
+                    color: Colors.pink.shade100,
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.pink.withOpacity(0.5),
+                        color: Colors.grey.withOpacity(0.5),
                         offset: const Offset(0, 3),
                         blurRadius: 7,
                         spreadRadius: 2,
@@ -83,7 +83,7 @@ class Register extends State<PageRegister> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Đăng Kí',
+                            'SHOP KEN',
                             style: TextStyle(
                               //color: Colors.pink,
                               fontSize: 30,
@@ -95,14 +95,14 @@ class Register extends State<PageRegister> {
                             ),
                           ),
 
-                          Container(
+                         /*  Container(
                             width: 300,
                             height: 50,
                             decoration: BoxDecoration(
-                              color: Colors.pink.shade100,
-                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(0),
                             ),
-                            child: TextFormField(
+                            child:  */TextFormField(
                               decoration: const InputDecoration(
                                 prefixIcon: Icon(Icons.info),
                                 border: OutlineInputBorder(),
@@ -110,19 +110,19 @@ class Register extends State<PageRegister> {
                               ),
                               keyboardType: TextInputType.text,
                               controller: txtTenDangNhap,
-                              validator: MinLengthValidator(5,
-                                  errorText: 'Vui lòng nhập trên 4 kí tự'),
+                              /* validator: MinLengthValidator(5,
+                                  errorText: 'Vui lòng nhập trên 4 kí tự'), */
                             ),
-                          ),
+                          /* ), */
 
-                          Container(
+                         /*  Container(
                             width: 300,
                             height: 50,
                             decoration: BoxDecoration(
                               color: Colors.pink.shade100,
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: TextFormField(
+                            child: */ TextFormField(
                               decoration: const InputDecoration(
                                 prefixIcon: Icon(Icons.lock),
                                 border: OutlineInputBorder(),
@@ -130,19 +130,19 @@ class Register extends State<PageRegister> {
                               ),
                               controller: txtMatKhau,
                               keyboardType: TextInputType.text,
-                              validator: MinLengthValidator(5,
-                                  errorText: 'Vui lòng nhập trên 4 kí tự'),
+                             /*  validator: MinLengthValidator(5,
+                                  errorText: 'Vui lòng nhập trên 4 kí tự'), */
                             ),
-                          ),
+                         /*  ), */
 
-                          Container(
+                         /*  Container(
                             width: 300,
                             height: 50,
                             decoration: BoxDecoration(
                               color: Colors.pink.shade100,
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: TextFormField(
+                            child:  */TextFormField(
                               decoration: const InputDecoration(
                                 prefixIcon: Icon(Icons.email),
                                 border: OutlineInputBorder(),
@@ -153,7 +153,7 @@ class Register extends State<PageRegister> {
                               validator: EmailValidator(
                                   errorText: 'Vui lòng nhập đúng định dạng'),
                             ),
-                          ),
+                         /*  ), */
 
                           // ignore: deprecated_member_use
                           FlatButton(
@@ -161,15 +161,16 @@ class Register extends State<PageRegister> {
                                 vertical: 12, horizontal: 65),
                             color: Colors.red,
                             onPressed: () {
-                              if (txtTenDangNhap.text.length > 4 &&
-                                  txtMatKhau.text.length > 4 &&
+                              if (txtTenDangNhap.text.length >= 6 &&
+                                  txtMatKhau.text.length >= 6 &&
                                   txtEmail.text.isNotEmpty) {
                                 register();
-                              } else {
+                              } else if(txtTenDangNhap.text.length < 6 &&
+                                  txtMatKhau.text.length < 6 ){
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(const SnackBar(
                                   content:
-                                      Text('Vui Lòng nhập đúng thông tin '),
+                                      Text('Mật khẩu hoặc tên đăng nhập không được dưới 6 kí tự'),
                                 ));
                               }
                             },

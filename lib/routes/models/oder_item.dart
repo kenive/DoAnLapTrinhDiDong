@@ -1,28 +1,51 @@
 class OderItem {
 
-  final int id;
-  final int idProduct;
-  final int idAccount;
-  final int quantily;
+  final String name;
+  final String image;
+  final int price;
+  final int quantity;
+  final String ngayLap;
+  final String nameShoping;
+  final String phoneShoping;
+  final String addressShoping;
+  final int total;
+
 
   OderItem({
-   required this.id,
-   required this.idProduct,
-   required this.idAccount,
-   required this.quantily,
+   required this.name,
+   required this.image,
+   required this.price,
+   required this.quantity,
+   required this.ngayLap,
+   required this.nameShoping,
+   required this.phoneShoping,
+   required this.addressShoping,
+   required this.total,
+   
   });
 
   OderItem.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
-        idProduct=json['productId'],
-        idAccount=json['accountId'],
-        quantily=json['quantity'];
+      : name = json['name'],
+        image=json['image'],
+        price=json['price'],
+        quantity=json['quantily'],
+        ngayLap = json['issuedDate'],
+        nameShoping=json['nameShopping'],
+        phoneShoping=json['phoneShoping'],
+        addressShoping=json['addressShoping'],
+        total=json['total'];
+        
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'accountId': idAccount,
-        'productId': idProduct,
-        'quantity': quantily,
+        'name': name,
+        'image': image,
+        'price': price,
+        'quantily': quantity,
+        'issuedDate': ngayLap,
+        'nameShopping': nameShoping,
+        'phoneShoping': phoneShoping,
+        'addressShoping': addressShoping,
+        'total':total,
       };
 
 }
