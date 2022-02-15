@@ -125,11 +125,7 @@ class _PagePayState extends State<PagePay> {
                                   children: [
                                     TextButton(
                                       onPressed: () {
-                                        /* Navigator.of(context).pop(txtname.text);
-                                Navigator.of(context).pop(txtaddress.text);
-                                Navigator.of(context).pop(txtphone.text); */
-                                        
-                                        //Navigator.pushNamed(context, 'pay');
+                                       
                                         cart.address(txtname.text, txtphone.text,txtaddress.text);
                                         Navigator.pop(context, 'OK');
 

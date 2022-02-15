@@ -1,4 +1,4 @@
-import 'package:doan_mobile/routes/provider/search_sanpham.dart';
+import 'package:doan_mobile/routes/provider/providersearch.dart';
 import 'package:doan_mobile/routes/product/product_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

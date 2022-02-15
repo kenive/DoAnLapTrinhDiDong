@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+import 'package:doan_mobile/routes/login/login.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import '../models/account.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -28,5 +30,21 @@ class LoginProvider extends ChangeNotifier {
       {}
     }
     return acc;
+  }
+  var google=GoogleSignIn();
+  GoogleSignInAccount? gg;
+    login1()async{
+    final gg1=await google.signIn();
+    if(gg1== null){
+      return;
+    }
+    gg=gg1;
+    notifyListeners();
+
+  }
+  logout1()async{
+    gg=await google.signOut();
+    notifyListeners();
+
   }
 }

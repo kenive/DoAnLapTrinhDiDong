@@ -93,6 +93,7 @@ class _PageDetailState extends State<PageDetail> {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
+                               
                                 Text(detail.lstOder[index].name),
                                 Text('x ${detail.lstOder[index].quantity}'),
                                 Text(

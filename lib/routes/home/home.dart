@@ -1,4 +1,4 @@
-import 'package:doan_mobile/routes/provider/search_sanpham.dart';
+import 'package:doan_mobile/routes/provider/providersearch.dart';
 import 'package:doan_mobile/routes/product/product_detail.dart';
 import 'package:doan_mobile/routes/provider/providerproduct.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,7 +23,6 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   late PageController _pageController;
-  String user = "";
   @override
   void initState() {
     super.initState();
@@ -36,16 +35,16 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
     return Container(
       height: 40,
       decoration: BoxDecoration(
-        color: Colors.pink.shade100,
+        color: Colors.pink.shade50,
         borderRadius: BorderRadius.circular(10),
-        boxShadow: [
+       /*  boxShadow: [
           BoxShadow(
             color: Colors.white.withOpacity(0.5),
             offset: const Offset(0, 5),
             blurRadius: 7,
             spreadRadius: 3,
           ),
-        ],
+        ], */
       ),
       margin: const EdgeInsets.fromLTRB(10, 0, 250, 0),
       child: Center(
@@ -152,19 +151,21 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
                             producttype: danhmuc.lstDanhMuc[index])));
               },
               child: Card(
-                color: Colors.pink[50],
-                elevation: 0,
+                //color: Colors.pink[50],
+                elevation: 7,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  //mainAxisAlignment: MainAxisAlignment.center,
+                  //crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                   
                     Container(
-                      width: 170,
-                      height: 170,
+                      width: 150,
+                      height: 150,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(100),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
+                            color: Colors.red.withOpacity(0.5),
                             spreadRadius: 3,
                             blurRadius: 7,
                             offset: const Offset(3, 2),
@@ -175,11 +176,9 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      margin: const EdgeInsets.fromLTRB(15, 20, 10, 20),
+                      margin: const EdgeInsets.fromLTRB(24, 20, 23, 30),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                   
                     Text(
                       danhmuc.lstDanhMuc[index].category,
                       style: const TextStyle(
@@ -197,7 +196,7 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
         );
       }),
       const SizedBox(
-        height: 20,
+        height: 30,
       ),
       chude('Sản Phẩm Mới'),
       const SizedBox(
@@ -300,20 +299,24 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
       child: Scaffold(
         backgroundColor: Colors.pink.shade50,
         appBar: AppBar(
-          backgroundColor: Colors.pink.shade300,
+          backgroundColor: Colors.pink[50],
           centerTitle: false,
           automaticallyImplyLeading: false,
           title: Container(
             decoration: BoxDecoration(
                 color: Colors.pink.shade100,
                 borderRadius: BorderRadius.circular(30),
-                boxShadow: const [
+                border: Border.all(
+                   width: 1,
+                color: Colors.black,
+                ),
+                /* boxShadow: const [
                   BoxShadow(
-                    offset: Offset(0, 10),
-                    blurRadius: 50,
-                    color: Colors.pink,
+                    offset: Offset(0, 2),
+                    //blurRadius: 50,
+                    //color: Colors.pink,
                   ),
-                ]),
+                ] */),
             child: TextField(
               readOnly: true,
               onTap: () {
@@ -342,7 +345,7 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
               width: 60,
               height: 60,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
+                borderRadius: BorderRadius.circular(30),
                 color: Colors.red,
                 boxShadow: [
                   BoxShadow(

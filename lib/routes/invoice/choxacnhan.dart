@@ -16,6 +16,7 @@ class _PageChoNhanState extends State<PageChoNhan> {
     var lstinvoi = Provider.of<InvoiceProvider>(context, listen: false);
     var id = Provider.of<LoginProvider>(context, listen: false);
     lstinvoi.getInvoice(id.acc!.id, 1);
+    
     return Scaffold(
       body: Consumer<InvoiceProvider>(builder: (_, value, child) {
         return SingleChildScrollView(
@@ -125,6 +126,7 @@ class _PageChoNhanState extends State<PageChoNhan> {
                                     onPressed: () {
                                       
                                       lstinvoi.updateStatus(lstinvoi.lstInvoise[index].id, 4);
+                                      
                                       lstinvoi.getInvoice(id.acc!.id, 1);
 
                                     },

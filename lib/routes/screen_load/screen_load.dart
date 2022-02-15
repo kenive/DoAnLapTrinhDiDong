@@ -33,7 +33,7 @@ class _MyHomePageState extends State<ScreenLoad>
     return Scaffold(
       body: Stack(
         children: [
-          Container(
+        /*   Container(
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
@@ -48,7 +48,7 @@ class _MyHomePageState extends State<ScreenLoad>
                 ],
               ),
             ),
-          ),
+          ), */
           Center(child: 
           Column( 
             mainAxisAlignment: MainAxisAlignment.center,
@@ -58,13 +58,7 @@ class _MyHomePageState extends State<ScreenLoad>
                 ..setEntry(3, 2, 0.005)
                 ..rotateY(2*pi*flip.value),
                 alignment: Alignment.center,
-                child: Container(
-                width: 250,
-                height: 60,
-                decoration: BoxDecoration(
-                  color: Colors.pink.shade100,
-                  borderRadius: BorderRadius.circular(20),
-                ),
+               
                 child:RotationTransition(
                   turns: flip,
                    child:Center(
@@ -79,13 +73,13 @@ class _MyHomePageState extends State<ScreenLoad>
                       ..strokeWidth = 2
                       ..color = Colors.pink.shade700,
                   ),
-                ),), ),
+                ),), 
 
                 ),
                 
                 ),
               
-                const SizedBox(height: 30,),
+                const SizedBox(height: 40,),
               const Text('CHÀO MỪNG QUÝ KHÁCH',
               style: TextStyle(
                 fontSize:20,
@@ -95,10 +89,10 @@ class _MyHomePageState extends State<ScreenLoad>
               ),
               const SizedBox(height: 30,),
               Container(
-                height: 300,
+                height: 250,
                 decoration:const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('images/abc.jpg'),
+                    image: AssetImage('images/cute3.jpg'),
                     fit: BoxFit.contain
                   )
                 ),

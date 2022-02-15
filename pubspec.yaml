@@ -38,6 +38,10 @@ dependencies:
   shared_preferences: ^2.0.12
   form_field_validator: ^1.1.0
   provider: ^6.0.2
+  google_sign_in: ^5.0.5
+  font_awesome_flutter: ^9.0.0
+
+
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +67,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+  - images/cute3.jpg
+  - images/cute2.jpg
+  - images/cute.jpg
   - images/hs.jpg
   - images/abc.jpg
   - images/avatar.png

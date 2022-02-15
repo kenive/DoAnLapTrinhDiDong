@@ -1,4 +1,5 @@
 class OderItem {
+  final int id;
 
   final String name;
   final String image;
@@ -12,6 +13,7 @@ class OderItem {
 
 
   OderItem({
+  required this.id,
    required this.name,
    required this.image,
    required this.price,
@@ -25,7 +27,8 @@ class OderItem {
   });
 
   OderItem.fromJson(Map<String, dynamic> json)
-      : name = json['name'],
+      : id = json['id'],
+        name = json['name'],
         image=json['image'],
         price=json['price'],
         quantity=json['quantily'],
@@ -37,6 +40,7 @@ class OderItem {
         
 
   Map<String, dynamic> toJson() => {
+        'id': id,
         'name': name,
         'image': image,
         'price': price,
