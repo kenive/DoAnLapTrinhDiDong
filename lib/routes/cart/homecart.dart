@@ -2,6 +2,7 @@ import 'package:doan_mobile/routes/provider/providercart.dart';
 import 'package:doan_mobile/routes/provider/providerlogin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 class PageCart extends StatefulWidget {
@@ -22,11 +23,23 @@ class Cart extends State<PageCart> {
     return Scaffold(
         backgroundColor: Colors.pink[50],
         appBar: AppBar(
-          backgroundColor: Colors.pink[200],
-          title: const Text(
+          backgroundColor: Colors.pink[400],
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              const Text(
             'Giỏ Hàng',
-            style: TextStyle(color: Colors.black),
-          ),
+            style: TextStyle(color: Colors.black),),
+            Lottie.network(
+                'https://assets6.lottiefiles.com/private_files/lf30_x2lzmtdl.json',
+                width: 100,
+                height: 100,
+                fit: BoxFit.contain,
+              ),
+          
+
+            ],
+          )
           /*  leading:IconButton(onPressed: (){
             Navigator.pop(context);
             cartprov.resetTotal();

@@ -4,6 +4,8 @@ import 'package:http/http.dart' as http;
 //import 'package:form_field_validator/form_field_validator.dart';
 import 'dart:convert';
 
+import 'package:lottie/lottie.dart';
+
 class PageRegister extends StatefulWidget {
   const PageRegister({Key? key}) : super(key: key);
   @override
@@ -37,20 +39,20 @@ class Register extends State<PageRegister> {
               child: Container(
                 //color: Colors.white,
                 child: Padding(
-                  padding: const EdgeInsets.all(35),
+                  padding: const EdgeInsets.all(20),
                   child: Form(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                          SizedBox(
-                        height: 150,
-                        child: Image.asset(
-                          "images/cute2.jpg",
-                          fit: BoxFit.contain,
-                        )),
+                          Lottie.network(
+                      'https://assets2.lottiefiles.com/packages/lf20_vw0rgf1c.json',
+                      width: 150,
+                      height: 150,
+                      fit: BoxFit.fill,
+                    ),
                         Text(
-                          'KEN SHOP',
+                          'LOVE WINS',
                           style: TextStyle(
                             //color: Colors.pink,
                             fontSize: 30,

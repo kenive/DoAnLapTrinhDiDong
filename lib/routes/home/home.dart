@@ -1,17 +1,16 @@
-import 'package:doan_mobile/routes/cart/homecart.dart';
 import 'package:doan_mobile/routes/provider/providersearch.dart';
 import 'package:doan_mobile/routes/product/product_detail.dart';
 import 'package:doan_mobile/routes/provider/providerproduct.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import '../models/banner.dart';
 
 //import '../API/loaisanpham.dart';
-import '../product/product.dart';
 
 import '../account/myhome.dart';
-import '../provider/providerloaisanpham.dart';
+
 import '../product/producttype.dart';
 
 class Home extends StatefulWidget {
@@ -37,18 +36,8 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
     return Container(
       height: 50,
       decoration: BoxDecoration(
-        color: Colors.pink.shade200,
-        borderRadius: BorderRadius.circular(25),
-        /*  boxShadow: [
-          BoxShadow(
-            color: Colors.white.withOpacity(0.5),
-            offset: const Offset(0, 5),
-            blurRadius: 7,
-            spreadRadius: 3,
-          ),
-        ], */
-      ),
-      margin: const EdgeInsets.fromLTRB(10, 0, 250, 0),
+          color: Colors.pink.shade200, borderRadius: BorderRadius.circular(10)),
+      margin: const EdgeInsets.fromLTRB(10, 0, 0, 0),
       child: Center(
         child: Text(
           a,
@@ -140,13 +129,22 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
 
     var listView = ListView(children: [
       _container,
-      const SizedBox(
-        height: 20,
+     
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          chude('Sản Phẩm Mới'),
+          Lottie.network(
+            'https://assets7.lottiefiles.com/packages/lf20_zunhpwue.json',
+            width: 150,
+            height: 140,
+            fit: BoxFit.contain,
+          ),
+        ],
       ),
-      chude('Sản Phẩm Mới'),
-      const SizedBox(
+     /*  const SizedBox(
         height: 30,
-      ),
+      ), */
       Consumer<ProductProvider>(
         builder: (_, value, child) {
           return SingleChildScrollView(

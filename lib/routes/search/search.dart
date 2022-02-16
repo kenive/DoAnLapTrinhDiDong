@@ -29,13 +29,7 @@ class _SearchScreenState extends State<SearchScreen> {
                    width: 1,
                 color: Colors.black,
                 ),
-              boxShadow: const [
-                BoxShadow(
-                  offset: Offset(0, 2),
-                  blurRadius: 10,
-                  color: Colors.pink,
-                ),
-              ]),
+             ),
           child: TextField(
             keyboardType: TextInputType.text,
             controller: cc,

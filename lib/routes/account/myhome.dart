@@ -1,8 +1,8 @@
-
 import 'package:doan_mobile/routes/home/home.dart';
 
 import 'package:doan_mobile/routes/provider/providerlogin.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import '../product/producttype.dart';
 
@@ -29,16 +29,16 @@ class MyHomePage extends State<MyHome> {
         decoration: BoxDecoration(
           color: Colors.pink.shade100,
           borderRadius: BorderRadius.circular(10),
-           boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      offset: const Offset(3, 2),
-                                      blurRadius: 4,
-                                      spreadRadius: 1,
-                                    )
-                                  ],
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              offset: const Offset(3, 2),
+              blurRadius: 4,
+              spreadRadius: 1,
+            )
+          ],
         ),
-        margin: const EdgeInsets.fromLTRB(10, 0, 250, 0),
+        margin: const EdgeInsets.fromLTRB(10, 0, 0, 0),
         child: Center(
           child: Text(
             a,
@@ -72,14 +72,11 @@ class MyHomePage extends State<MyHome> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
               border: Border.all(
-
                 width: 1,
                 color: Colors.black,
-              
               ),
 
               //borderRadius: BorderRadius.circular(10),
-              
             ),
             child: IconButton(
               onPressed: () {
@@ -107,20 +104,31 @@ class MyHomePage extends State<MyHome> {
                 decoration: BoxDecoration(
                   color: Colors.pink[200],
                   borderRadius: BorderRadius.circular(10),
-                   boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      offset: const Offset(3, 3),
-                                      blurRadius: 4,
-                                      spreadRadius: 1,
-                                    )
-                                  ],
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      offset: const Offset(3, 3),
+                      blurRadius: 4,
+                      spreadRadius: 1,
+                    )
+                  ],
                 ),
                 margin: const EdgeInsets.fromLTRB(10, 20, 10, 0),
               ),
               Positioned(
+               top: 35,
+               left: 20,
+               
+                child: Lottie.network(
+                'https://assets6.lottiefiles.com/packages/lf20_n5icqxkw.json',
+                width: 70,
+                height: 80,
+                fit: BoxFit.contain,
+              ),
+              ),
+              Positioned(
                 top: 50,
-                left: 100,
+                left: 110,
                 child: Text(
                   a.acc!.fullName!,
                   style: const TextStyle(
@@ -133,7 +141,7 @@ class MyHomePage extends State<MyHome> {
               ),
               const Positioned(
                 top: 90,
-                left: 100,
+                left: 110,
                 child: Text(
                   'Thành Viên',
                   style: TextStyle(
@@ -154,41 +162,58 @@ class MyHomePage extends State<MyHome> {
                     color: Colors.pink,
                     borderRadius: BorderRadius.circular(50),
                     boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      offset: const Offset(3, 3),
-                                      blurRadius: 4,
-                                      spreadRadius: 1,
-                                    )
-                                  ],
-                    
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        offset: const Offset(3, 3),
+                        blurRadius: 4,
+                        spreadRadius: 1,
+                      )
+                    ],
                   ),
-                   child: IconButton(
-                  icon: const Icon(
-                    Icons.shopping_cart,
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.shopping_cart,
+                    ),
+                    iconSize: 30,
+                    color: Colors.white,
+                    splashColor: Colors.orange,
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/cart');
+                    },
                   ),
-                  iconSize: 30,
-                  color: Colors.white,
-                  splashColor: Colors.orange,
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/cart');
-                  },
-                ), 
                 ),
-
-                
               ),
             ],
           ),
-          const SizedBox(
-            height: 30,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              container('   Đơn Hàng   '),
+              Lottie.network(
+                'https://assets3.lottiefiles.com/packages/lf20_taDv2I.json',
+                width: 140,
+                height: 140,
+                fit: BoxFit.contain,
+              ),
+            ],
           ),
-          container('Đơn Hàng'),
-          const SizedBox(height: 40),
+          
           row('Xem lịch sử mua hàng', 'invoice'),
-          const SizedBox(height: 40),
-          container('Thông Tin'),
-          const SizedBox(height: 40),
+        
+           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              container('   Thông tin   '),
+              Lottie.network(
+                'https://assets10.lottiefiles.com/private_files/lf30_wfox4afo.json',
+                width: 140,
+                height: 140,
+                fit: BoxFit.contain,
+              ),
+            ],
+          ),
+        
+         
           row('Thiết lập tài khoản      ', '/setting'),
         ],
       ),
@@ -199,7 +224,7 @@ class MyHomePage extends State<MyHome> {
             // ignore: deprecated_member_use
             label: 'Home',
           ),
-           BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(Icons.category),
             // ignore: deprecated_member_use
             label: 'Danh Mục',

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
+import 'package:lottie/lottie.dart';
 
 class PageStatus extends StatefulWidget {
   const PageStatus({Key? key}) : super(key: key);
@@ -58,12 +59,19 @@ class _PageStatusState extends State<PageStatus>
             const SizedBox(
               height: 20,
             ),
-            SizedBox(
+            /* SizedBox(
                 height: 150,
                 child: Image.asset(
                   "images/cute4.jpg",
                   fit: BoxFit.contain,
-                )),
+                )), */
+            Lottie.network(
+              'https://assets1.lottiefiles.com/packages/lf20_wqepljpj.json',
+              width: 120,
+              height: 120,
+              fit: BoxFit.fill,
+            ),
+
             // ignore: deprecated_member_use
             const SizedBox(
               height: 20,

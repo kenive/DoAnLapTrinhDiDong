@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:lottie/lottie.dart';
 
 import 'package:provider/provider.dart';
 import '../provider/providerlogin.dart';
@@ -47,14 +48,20 @@ class Login extends State<PageLogin> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(
+                         Lottie.network(
+                      'https://assets4.lottiefiles.com/packages/lf20_a18slqgx.json',
+                      width: 200,
+                      height: 200,
+                      fit: BoxFit.fill,
+                    ),
+                        /* SizedBox(
                             height: 150,
                             child: Image.asset(
                               "images/cute.jpg",
                               fit: BoxFit.contain,
-                            )),
+                            )), */
                         Text(
-                          'SHOP HOA TƯƠI',
+                          'LOVE WINS',
                           style: TextStyle(
                             //color: Colors.pink,
                             fontSize: 30,

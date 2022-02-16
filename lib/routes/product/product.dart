@@ -147,20 +147,19 @@ class ProductHome extends State<PageProduct> {
       child: Scaffold(
         backgroundColor: Colors.pink.shade50,
         appBar: AppBar(
-          backgroundColor: Colors.pink.shade300,
+          backgroundColor: Colors.pink.shade50,
           centerTitle: false,
           automaticallyImplyLeading: false,
           title: Container(
             decoration: BoxDecoration(
                 color: Colors.pink.shade100,
                 borderRadius: BorderRadius.circular(30),
-                boxShadow: const [
-                  BoxShadow(
-                    offset: Offset(0, 10),
-                    blurRadius: 50,
-                    color: Colors.pink,
-                  ),
-                ]),
+                border: Border.all(
+                  width: 1,
+                  color:Colors.black
+                ),
+                
+                ),
             child: TextField(
               readOnly: true,
               onTap: () {

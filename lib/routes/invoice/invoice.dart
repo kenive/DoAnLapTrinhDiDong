@@ -3,6 +3,7 @@ import 'package:doan_mobile/routes/invoice/choxacnhan.dart';
 import 'package:doan_mobile/routes/invoice/dagiao.dart';
 import 'package:doan_mobile/routes/invoice/dahuy.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 
 class PageInvoice extends StatefulWidget {
@@ -18,9 +19,21 @@ class _PageInvoiceState extends State<PageInvoice> {
     
     length: 4, child: Scaffold(
       appBar: AppBar(
+        
         backgroundColor: Colors.pink[400],
         centerTitle: true,
-        title: const Text('Đơn Hàng'),
+        title:  Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text('Đơn Hàng'),
+             Lottie.network(
+            'https://assets7.lottiefiles.com/packages/lf20_5z4qVQ.json',
+            width: 200,
+            height: 90,
+            fit: BoxFit.contain,
+          ),
+
+        ],),
         bottom: const TabBar(
           tabs: [
             Text('Chờ Xác Nhận'),
