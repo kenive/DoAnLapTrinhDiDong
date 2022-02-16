@@ -62,7 +62,7 @@ class _PageDetailState extends State<PageDetail> {
                     detail.lstOder.length,
                     (index) {
                       return Container(
-                        height: 100,
+                        height: 120,
                         width: 400,
                         //color: Colors.white,
                         decoration:
@@ -79,8 +79,8 @@ class _PageDetailState extends State<PageDetail> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              width: 100,
-                              height: 100,
+                              width: 120,
+                              height: 120,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                   image:

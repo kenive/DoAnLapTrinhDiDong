@@ -18,17 +18,21 @@ class _SearchScreenState extends State<SearchScreen> {
     var prods = Provider.of<SearchApi>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.pink.shade300,
+        backgroundColor: Colors.white,
         centerTitle: false,
         automaticallyImplyLeading: false,
         title: Container(
           decoration: BoxDecoration(
               color: Colors.pink.shade100,
               borderRadius: BorderRadius.circular(30),
+               border: Border.all(
+                   width: 1,
+                color: Colors.black,
+                ),
               boxShadow: const [
                 BoxShadow(
-                  offset: Offset(0, 10),
-                  blurRadius: 50,
+                  offset: Offset(0, 2),
+                  blurRadius: 10,
                   color: Colors.pink,
                 ),
               ]),
@@ -42,10 +46,12 @@ class _SearchScreenState extends State<SearchScreen> {
               }
             },
             decoration: InputDecoration(
+              
               enabledBorder: InputBorder.none,
               focusedBorder: InputBorder.none,
               contentPadding: const EdgeInsets.only(top: 14),
               border: const OutlineInputBorder(),
+              
               prefixIcon: IconButton(
                 icon: const Icon(
                   Icons.search,
@@ -60,17 +66,33 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
         ),
         actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.shopping_cart,
+          Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                color: Colors.red,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    offset: const Offset(3, 3),
+                    blurRadius: 4,
+                    spreadRadius: 1,
+                  )
+                ],
+              ),
+              child: IconButton(
+                icon: const Icon(
+                  Icons.shopping_cart,
+                ),
+                iconSize: 25,
+                color: Colors.white,
+                splashColor: Colors.pink,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/cart');
+                },
+              ),
             ),
-            iconSize: 30,
-            color: Colors.white,
-            splashColor: Colors.pink,
-            onPressed: () {
-              Navigator.pushNamed(context, '/cart');
-            },
-          ),
         ],
       ),
       body: Consumer<SearchApi>(
@@ -91,19 +113,39 @@ class _SearchScreenState extends State<SearchScreen> {
                                   builder: (_) => PageDetail(
                                       product: prods.datasearch[index])));
                         },
-                        child: Container(
+                        child: 
+                        Hero(
+                          tag: prods.datasearch[index].id.toString(),
+                          child:Container(
                           margin: const EdgeInsets.all(5),
-                          height: 250,
+                          height: 270,
                           width: 190,
-                          color: Colors.pink[50],
+                         
+                          decoration:BoxDecoration(
+                             color: Colors.pink[50],
+                             border: Border.all(
+                               width: 0.5,
+                               color: Colors.black
+                             ),
+                             boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.5),
+                                      offset: const Offset(1, 3),
+                                      blurRadius: 4,
+                                      spreadRadius: 1,
+                                    )
+                                  ],
+
+                          ) ,
                           child: Column(
                             children: [
+                              const SizedBox(height: 10,),
                               Container(
                                 margin: const EdgeInsets.all(5),
-                                width: 150,
-                                height: 150,
+                                width: 160,
+                                height: 160,
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(120),
+                                  borderRadius: BorderRadius.circular(10),
                                   boxShadow: [
                                     BoxShadow(
                                       color: Colors.grey.withOpacity(0.5),
@@ -141,6 +183,7 @@ class _SearchScreenState extends State<SearchScreen> {
                               ),
                             ],
                           ),
+                        ) ,
                         ),
                       );
                     }),

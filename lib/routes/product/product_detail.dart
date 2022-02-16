@@ -18,7 +18,7 @@ class Detail extends State<PageDetail> {
   var quality = 1;
 
   var boxShadow2 = BoxShadow(
-    color: Colors.pink.withOpacity(0.5),
+    color: Colors.white.withOpacity(0.5),
     offset: const Offset(1, 3),
     blurRadius: 4,
     spreadRadius: 1,
@@ -41,6 +41,7 @@ class Detail extends State<PageDetail> {
               ),
               Positioned(
                 top: 10,
+              
                 child: Text(
                   a,
                   style: const TextStyle(
@@ -66,7 +67,7 @@ class Detail extends State<PageDetail> {
               ),
               Positioned(
                 top: 10,
-                left: 25,
+                left: 15,
                 child: Text(
                   b,
                   style: const TextStyle(
@@ -159,12 +160,12 @@ class Detail extends State<PageDetail> {
           height: 20,
         ),
         Card(
-          elevation: 0,
+          elevation: 10,
           child: Hero(
             tag: widget.product.id.toString(),
             child: Container(
-              height: 300,
-              //width: 200,
+              height: 400,
+              width: 400,
              
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -173,18 +174,18 @@ class Detail extends State<PageDetail> {
                   ],
                   image: DecorationImage(
                       image: AssetImage(widget.product.imageUrl),
-                      fit: BoxFit.cover)),
+                      fit: BoxFit.contain)),
             ),
           ),
         ),
         const SizedBox(
           height: 20,
         ),
-        decri('Tên sản phẩm:   ', widget.product.name),
+        decri('Tên sản phẩm:', widget.product.name),
         const SizedBox(
           height: 30,
         ),
-        decri('Giá:   ', '${widget.product.price}  VNĐ'),
+        decri('Giá:', '${widget.product.price} VNĐ'),
         const SizedBox(
           height: 30,
         ),
@@ -230,7 +231,7 @@ class Detail extends State<PageDetail> {
     return Scaffold(
         backgroundColor: Colors.pink[50],
         appBar: AppBar(
-          backgroundColor: Colors.pink[400],
+          backgroundColor: Colors.pink[200],
           title: const Text('Chi tiết sản phẩm'),
         ),
         body: listView,

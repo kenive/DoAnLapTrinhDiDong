@@ -1,8 +1,10 @@
+
 import 'package:doan_mobile/routes/home/home.dart';
 
 import 'package:doan_mobile/routes/provider/providerlogin.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../product/producttype.dart';
 
 class MyHome extends StatefulWidget {
   const MyHome({Key? key}) : super(key: key);
@@ -197,14 +199,19 @@ class MyHomePage extends State<MyHome> {
             // ignore: deprecated_member_use
             label: 'Home',
           ),
+           BottomNavigationBarItem(
+            icon: Icon(Icons.category),
+            // ignore: deprecated_member_use
+            label: 'Danh Mục',
+          ),
           BottomNavigationBarItem(
               icon: Icon(Icons.person),
               // ignore: deprecated_member_use
               label: 'Tôi'),
         ],
-        backgroundColor: Colors.pink[300],
+        backgroundColor: Colors.white,
         selectedItemColor: Colors.blue,
-        currentIndex: 1,
+        currentIndex: 2,
         onTap: (index) {
           Navigator.push(
             context,
@@ -213,6 +220,9 @@ class MyHomePage extends State<MyHome> {
                 return const Home();
               }
               if (index == 1) {
+                return const Type();
+              }
+              if (index == 2) {
                 return const MyHome();
               }
               return const MyHome();

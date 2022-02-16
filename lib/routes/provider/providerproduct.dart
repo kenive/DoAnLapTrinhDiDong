@@ -19,12 +19,13 @@ class ProductProvider extends ChangeNotifier {
         data.forEach((item) {
           tmp.add(Product.fromJson(item));
         });
+         lstProduct = tmp;
+
+         notifyListeners();
         // ignore: empty_catches
       } catch (e) {}
     }
-    lstProduct = tmp;
-
-    notifyListeners();
+   
   }
 
   List<Product> lstProduct1 = [];

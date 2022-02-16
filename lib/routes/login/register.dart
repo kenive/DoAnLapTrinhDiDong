@@ -124,7 +124,7 @@ class Register extends State<PageRegister> {
                                   txtMatKhau.text.length >= 6 &&
                                   txtEmail.text.isNotEmpty) {
                                 register();
-                              } else if(txtTenDangNhap.text.length < 6 &&
+                              } else if(txtTenDangNhap.text.length < 6 ||
                                   txtMatKhau.text.length < 6 ){
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(const SnackBar(

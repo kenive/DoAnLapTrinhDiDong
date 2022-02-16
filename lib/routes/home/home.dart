@@ -1,3 +1,4 @@
+import 'package:doan_mobile/routes/cart/homecart.dart';
 import 'package:doan_mobile/routes/provider/providersearch.dart';
 import 'package:doan_mobile/routes/product/product_detail.dart';
 import 'package:doan_mobile/routes/provider/providerproduct.dart';
@@ -11,6 +12,7 @@ import '../product/product.dart';
 
 import '../account/myhome.dart';
 import '../provider/providerloaisanpham.dart';
+import '../product/producttype.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -33,11 +35,11 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
 
   chude(String a) {
     return Container(
-      height: 40,
+      height: 50,
       decoration: BoxDecoration(
-        color: Colors.pink.shade50,
-        borderRadius: BorderRadius.circular(10),
-       /*  boxShadow: [
+        color: Colors.pink.shade200,
+        borderRadius: BorderRadius.circular(25),
+        /*  boxShadow: [
           BoxShadow(
             color: Colors.white.withOpacity(0.5),
             offset: const Offset(0, 5),
@@ -54,7 +56,7 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
             fontSize: 20,
             fontWeight: FontWeight.bold,
             fontFamily: "Times New Roman",
-            color: Colors.red,
+            color: Colors.black,
           ),
         ),
       ),
@@ -121,8 +123,8 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
     pro.getNewProdct(1);
     var prods = Provider.of<SearchApi>(context, listen: false);
     prods.getAllProd();
-    var danhmuc = Provider.of<CategoryProvider>(context, listen: false);
-    danhmuc.getDanhMuc();
+    /*  var danhmuc = Provider.of<CategoryProvider>(context, listen: false);
+    danhmuc.getDanhMuc(); */
     // ignore: sized_box_for_whitespace
     var _container = Container(
       height: 230,
@@ -138,69 +140,12 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
 
     var listView = ListView(children: [
       _container,
-      chude('Chủ Đề'),
-      Consumer<CategoryProvider>(builder: (context, categoty, child) {
-        return Wrap(
-          children: List.generate(danhmuc.lstDanhMuc.length, (index) {
-            return InkWell(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => PageProduct(
-                            producttype: danhmuc.lstDanhMuc[index])));
-              },
-              child: Card(
-                //color: Colors.pink[50],
-                elevation: 7,
-                child: Column(
-                  //mainAxisAlignment: MainAxisAlignment.center,
-                  //crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                   
-                    Container(
-                      width: 150,
-                      height: 150,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.red.withOpacity(0.5),
-                            spreadRadius: 3,
-                            blurRadius: 7,
-                            offset: const Offset(3, 2),
-                          ),
-                        ],
-                        image: DecorationImage(
-                          image: AssetImage(danhmuc.lstDanhMuc[index].imageUrl),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      margin: const EdgeInsets.fromLTRB(24, 20, 23, 30),
-                    ),
-                   
-                    Text(
-                      danhmuc.lstDanhMuc[index].category,
-                      style: const TextStyle(
-                        fontFamily: 'Times New Roman',
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.pink,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          }),
-        );
-      }),
       const SizedBox(
-        height: 30,
+        height: 20,
       ),
       chude('Sản Phẩm Mới'),
       const SizedBox(
-        height: 20,
+        height: 30,
       ),
       Consumer<ProductProvider>(
         builder: (_, value, child) {
@@ -213,75 +158,79 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
                     direction: Axis.horizontal,
                     children: List.generate(pro.lstProduct.length, (index) {
                       return InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (_) => PageDetail(
-                                      product: pro.lstProduct[index])));
-                        },
-                        child: Container(
-                          margin: const EdgeInsets.all(5),
-                          height: 250,
-                          width: 190,
-                          decoration: BoxDecoration(
-                            color: Colors.white70,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                offset: const Offset(3, 3),
-                                blurRadius: 4,
-                                spreadRadius: 1,
-                              )
-                            ],
-                          ),
-                          child: Column(
-                            children: [
-                              Container(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => PageDetail(
+                                        product: pro.lstProduct[index])));
+                          },
+                          child: Hero(
+                              tag: pro.lstProduct[index].id.toString(),
+                              child: Container(
                                 margin: const EdgeInsets.all(5),
-                                width: 150,
-                                height: 150,
+                                height: 290,
+                                width: 190,
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(120),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      offset: const Offset(1, 3),
-                                      blurRadius: 4,
-                                      spreadRadius: 1,
-                                    )
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.white38,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.5),
+                                        offset: const Offset(3, 3),
+                                        blurRadius: 4,
+                                        spreadRadius: 1,
+                                      )
+                                    ],
+                                    border: Border.all(
+                                        width: 0.5, color: Colors.black)),
+                                child: Column(
+                                  children: [
+                                    const SizedBox(height: 10),
+                                    Container(
+                                      margin: const EdgeInsets.all(5),
+                                      width: 170,
+                                      height: 170,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.withOpacity(0.5),
+                                            offset: const Offset(1, 3),
+                                            blurRadius: 4,
+                                            spreadRadius: 1,
+                                          )
+                                        ],
+                                        image: DecorationImage(
+                                          image: AssetImage(
+                                              pro.lstProduct[index].imageUrl),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 20),
+                                    Text(
+                                      pro.lstProduct[index].name,
+                                      style: const TextStyle(
+                                        fontFamily: 'Times New Roman',
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.pink,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 20),
+                                    Text(
+                                      'Giá: ${pro.lstProduct[index].price} VNĐ',
+                                      style: const TextStyle(
+                                        fontFamily: 'Times New Roman',
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.pink,
+                                      ),
+                                    ),
                                   ],
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                        pro.lstProduct[index].imageUrl),
-                                    fit: BoxFit.cover,
-                                  ),
                                 ),
-                              ),
-                              const SizedBox(height: 20),
-                              Text(
-                                pro.lstProduct[index].name,
-                                style: const TextStyle(
-                                  fontFamily: 'Times New Roman',
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.pink,
-                                ),
-                              ),
-                              const SizedBox(height: 20),
-                              Text(
-                                'Giá: ${pro.lstProduct[index].price} VNĐ',
-                                style: const TextStyle(
-                                  fontFamily: 'Times New Roman',
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.pink,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
+                              )));
                     }),
                   )
                 ],
@@ -304,19 +253,20 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
           automaticallyImplyLeading: false,
           title: Container(
             decoration: BoxDecoration(
-                color: Colors.pink.shade100,
-                borderRadius: BorderRadius.circular(30),
-                border: Border.all(
-                   width: 1,
+              color: Colors.pink.shade100,
+              borderRadius: BorderRadius.circular(30),
+              border: Border.all(
+                width: 1,
                 color: Colors.black,
-                ),
-                /* boxShadow: const [
+              ),
+              /* boxShadow: const [
                   BoxShadow(
                     offset: Offset(0, 2),
                     //blurRadius: 50,
                     //color: Colors.pink,
                   ),
-                ] */),
+                ] */
+            ),
             child: TextField(
               readOnly: true,
               onTap: () {
@@ -345,8 +295,8 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
               width: 60,
               height: 60,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                color: Colors.red,
+                borderRadius: BorderRadius.circular(50),
+                color: Colors.pink,
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.5),
@@ -360,7 +310,7 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
                 icon: const Icon(
                   Icons.shopping_cart,
                 ),
-                iconSize: 25,
+                iconSize: 30,
                 color: Colors.white,
                 splashColor: Colors.pink,
                 onPressed: () {
@@ -378,11 +328,15 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
               label: 'Home',
             ),
             BottomNavigationBarItem(
+              icon: Icon(Icons.category),
+              label: 'Danh Mục',
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: 'Tôi',
             ),
           ],
-          backgroundColor: Colors.pink.shade300,
+          backgroundColor: Colors.white,
           selectedItemColor: Colors.blue,
           currentIndex: 0,
           onTap: (index) {
@@ -393,6 +347,10 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
                   return const Home();
                 }
                 if (index == 1) {
+                  return const Type();
+                }
+
+                if (index == 2) {
                   return const MyHome();
                 }
                 return const MyHome();

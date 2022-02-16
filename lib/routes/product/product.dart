@@ -21,7 +21,6 @@ class PageProduct extends StatefulWidget {
 }
 
 class ProductHome extends State<PageProduct> {
-  //Future<List<Product>> listSanPham = fetchPostSanPham();
 
   var containerchude = Container(
     height: 40,
@@ -45,7 +44,7 @@ class ProductHome extends State<PageProduct> {
           fontSize: 15,
           fontWeight: FontWeight.bold,
           fontFamily: "Times New Roman",
-          color: Colors.red,
+          color: Colors.black,
         ),
       ),
     ),
@@ -53,9 +52,6 @@ class ProductHome extends State<PageProduct> {
 
   @override
   Widget build(BuildContext context) {
-    /* var product1 = Provider.of<ProductProvider>(context, listen: false);
-   pro */
-
     sanpham(AsyncSnapshot abc) {
       return Wrap(
         children: List.generate(abc.data.length, (index) {
@@ -67,7 +63,7 @@ class ProductHome extends State<PageProduct> {
                       builder: (_) => PageDetail(product: abc.data[index])));
             },
             child: Card(
-              color: Colors.white,
+              color: Colors.white70,
               elevation: 5,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -79,7 +75,7 @@ class ProductHome extends State<PageProduct> {
                       width: 230,
                       height: 230,
                       decoration: BoxDecoration(
-                        //borderRadius: BorderRadius.circular(120),
+                        borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.withOpacity(0.5),
@@ -96,8 +92,9 @@ class ProductHome extends State<PageProduct> {
                       margin: const EdgeInsets.fromLTRB(20, 10, 20, 20),
                     ),
                   ),
+                  const SizedBox(height: 10),
                   Text(
-                    'Tên sản phẩm: ${abc.data[index].name}',
+                    'Sản phẩm: ${abc.data[index].name}',
                     style: const TextStyle(
                       fontFamily: 'Times New Roman',
                       fontSize: 15,
@@ -107,7 +104,7 @@ class ProductHome extends State<PageProduct> {
                   ),
                   const SizedBox(height: 20),
                   Text(
-                    'Giá:  ${abc.data[index].price} VNĐ',
+                    'Giá: ${ abc.data[index].price} VNĐ',
                     style: const TextStyle(
                       fontFamily: 'Times New Roman',
                       fontSize: 15,
