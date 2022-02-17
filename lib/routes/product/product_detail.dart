@@ -136,6 +136,7 @@ class Detail extends State<PageDetail> {
             decoration: BoxDecoration(
                 color: Colors.pink[100],
                 borderRadius: BorderRadius.circular(10),
+                border: Border.all(width: 0.5,color:Colors.black),
                 boxShadow: [boxShadow2]),
             height: 30,
             width: 30,
@@ -148,6 +149,7 @@ class Detail extends State<PageDetail> {
               icon: const Icon(Icons.add),
               iconSize: 15,
               splashColor: Colors.pink[200],
+              
             ),
             margin: const EdgeInsets.only(left: 15, right: 15),
           ),
@@ -161,6 +163,8 @@ class Detail extends State<PageDetail> {
         ),
         Card(
           elevation: 10,
+          shadowColor: Colors.red,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           child: Hero(
             tag: widget.product.id.toString(),
             child: Container(
@@ -169,9 +173,9 @@ class Detail extends State<PageDetail> {
              
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
+                  /* boxShadow: [
                     boxShadow2,
-                  ],
+                  ], */
                   image: DecorationImage(
                       image: AssetImage(widget.product.imageUrl),
                       fit: BoxFit.contain)),

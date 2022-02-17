@@ -31,6 +31,7 @@ class _PageDaGiaoState extends State<PageDaGiao> {
                     },
                     child: Column(
                     children: [
+                      const SizedBox(height: 10,),
                       Container(
                         width: 450,
                         height: 200,

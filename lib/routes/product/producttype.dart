@@ -144,8 +144,14 @@ class _TypeState extends State<Type> {
                             producttype: danhmuc.lstDanhMuc[index])));
               },
               child: Card(
-                color: Colors.white60,
-                elevation: 10,
+                shadowColor: Colors.red,
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  
+               
+                ),
+                elevation: 7,
                 
                 child: Column(
                   //mainAxisAlignment: MainAxisAlignment.center,

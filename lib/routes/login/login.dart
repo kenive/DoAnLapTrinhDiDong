@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:lottie/lottie.dart';
 
 import 'package:provider/provider.dart';
 import '../provider/providerlogin.dart';
@@ -42,24 +41,24 @@ class Login extends State<PageLogin> {
               child: Container(
                 //color: Colors.white,
                 child: Padding(
-                  padding: const EdgeInsets.all(30),
+                  padding: const EdgeInsets.all(25),
                   child: Form(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                         Lottie.network(
+                         /* Lottie.network(
                       'https://assets4.lottiefiles.com/packages/lf20_a18slqgx.json',
                       width: 200,
                       height: 200,
                       fit: BoxFit.fill,
-                    ),
-                        /* SizedBox(
+                    ), */
+                        SizedBox(
                             height: 150,
                             child: Image.asset(
                               "images/cute.jpg",
                               fit: BoxFit.contain,
-                            )), */
+                            )),
                         Text(
                           'LOVE WINS',
                           style: TextStyle(

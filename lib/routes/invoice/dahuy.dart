@@ -30,6 +30,7 @@ class _PageDaHuyState extends State<PageDaHuy> {
                     },
                     child: Column(
                       children: [
+                        const SizedBox(height: 10,),
                         Container(
                           width: 450,
                           height: 220,

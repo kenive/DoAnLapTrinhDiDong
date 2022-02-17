@@ -63,8 +63,11 @@ class ProductHome extends State<PageProduct> {
                       builder: (_) => PageDetail(product: abc.data[index])));
             },
             child: Card(
-              color: Colors.white70,
-              elevation: 5,
+              //color: Colors.white70,
+              shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              shadowColor: Colors.red,
+
+              elevation: 10,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -75,7 +78,7 @@ class ProductHome extends State<PageProduct> {
                       width: 230,
                       height: 230,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(20),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.withOpacity(0.5),

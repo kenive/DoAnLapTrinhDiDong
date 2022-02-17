@@ -104,11 +104,12 @@ class MyHomePage extends State<MyHome> {
                 decoration: BoxDecoration(
                   color: Colors.pink[200],
                   borderRadius: BorderRadius.circular(10),
+                  border: Border.all(width: 1, color:Colors.black),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      offset: const Offset(3, 3),
-                      blurRadius: 4,
+                      color: Colors.pink.withOpacity(0.5),
+                      offset: const Offset(2, 2),
+                      blurRadius: 1,
                       spreadRadius: 1,
                     )
                   ],

@@ -31,6 +31,7 @@ class _PageChoLayState extends State<PageChoLay> {
                     },
                     child: Column(
                     children: [
+                      const SizedBox(height: 10,),
                       Container(
                         width: 450,
                         height: 220,

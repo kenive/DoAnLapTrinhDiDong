@@ -171,7 +171,7 @@ class HomePage extends State<Home> with SingleTickerProviderStateMixin {
                                 width: 190,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    color: Colors.white38,
+                                    color: Colors.white60,
                                     boxShadow: [
                                       BoxShadow(
                                         color: Colors.grey.withOpacity(0.5),

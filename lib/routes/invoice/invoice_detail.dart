@@ -60,7 +60,10 @@ class _PageDetailState extends State<PageDetail> {
                         width: 400,
                         //color: Colors.white,
                         decoration:
-                            BoxDecoration(color: Colors.pink[50], boxShadow: [
+                            BoxDecoration(color: Colors.pink[50], 
+                            border: Border.all(width: 1,color:Colors.black),
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: [
                           BoxShadow(
                             color: Colors.grey.withOpacity(0.5),
                             offset: const Offset(2, 2),
@@ -76,13 +79,14 @@ class _PageDetailState extends State<PageDetail> {
                               width: 120,
                               height: 120,
                               decoration: BoxDecoration(
+                                 borderRadius: BorderRadius.circular(20),
                                 image: DecorationImage(
                                   image:
                                       AssetImage(detail.lstOder[index].image),
                                   fit: BoxFit.cover,
                                 ),
                               ),
-                              margin: const EdgeInsets.only(left: 5),
+                              //margin: const EdgeInsets.only(left: 5),
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,

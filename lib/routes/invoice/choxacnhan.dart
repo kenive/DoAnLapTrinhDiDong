@@ -28,18 +28,16 @@ class _PageChoNhanState extends State<PageChoNhan> {
                     onTap: (){
                       lstinvoi.getItem(lstinvoi.lstInvoise[index].id);
                       Navigator.pushNamed(context, 'detail');
-
-
                     },
                   child: Column(
                     children: [
-                      
+                      const SizedBox(height: 10,),
                       Container(
                         width: 450,
                         height: 220,
                         decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(35.0),
+                            borderRadius: BorderRadius.circular(35),
                             boxShadow: const [
                               BoxShadow(
                                 color: Colors.black26,
