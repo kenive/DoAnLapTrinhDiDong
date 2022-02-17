@@ -1,4 +1,4 @@
-import 'package:doan_mobile/routes/invoice/cholayhang.dart';
+import 'package:doan_mobile/routes/invoice/dalayhang.dart';
 import 'package:doan_mobile/routes/invoice/choxacnhan.dart';
 import 'package:doan_mobile/routes/invoice/dagiao.dart';
 import 'package:doan_mobile/routes/invoice/dahuy.dart';

@@ -1,5 +1,6 @@
 import 'dart:convert';
 //import 'package:doan_mobile/routes/models/invoice.dart';
+//import 'package:doan_mobile/routes/models/cart_item.dart';
 import 'package:doan_mobile/routes/models/invoice.dart';
 import 'package:doan_mobile/routes/models/oder_item.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,7 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class InvoiceProvider extends ChangeNotifier {
-  List<Invoice> lstInvoise = [];
+  
 
   invoice(String name, String ress, String phone, double tatol, int account,
       int status) async {
@@ -30,11 +31,13 @@ class InvoiceProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  List<Invoice> lstInvoise = [];
+
   getInvoice(int id, int status) async {
     String url = "http://10.0.2.2:8000/api/invoice/$id/$status";
     final response = await http.get(Uri.parse(url));
-    List<Invoice> tmp = [];
 
+    List<Invoice> tmp = [];
     if (response.statusCode == 200) {
       try {
         dynamic object = jsonDecode(response.body);
@@ -46,7 +49,6 @@ class InvoiceProvider extends ChangeNotifier {
         //print(e);
       }
       lstInvoise = tmp;
-
       notifyListeners();
     }
   }
@@ -75,9 +77,10 @@ class InvoiceProvider extends ChangeNotifier {
 
   List<OderItem> lstOder = [];
 
-  Future<void> getItemCart(int id) async {
-    List<OderItem> lstTmp = [];
 
+  Future<void> getItem(int id) async {
+    
+    List<OderItem> lstTmp = [];
     String url = "http://10.0.2.2:8000/api/getinvoicedetail/$id";
     final response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
@@ -94,12 +97,33 @@ class InvoiceProvider extends ChangeNotifier {
 
       //print(lstTmp.length);
       notifyListeners();
+    }
+  }
+  
+  Future<void> mualai(int id) async {
+    /* List<CartItem> lstTmp = [];
+    int tmpTotal = 0; */
+    String url = "http://10.0.2.2:8000/api/mualai/$id";
+    final response = await http.get(Uri.parse(url));
+    if (response.statusCode == 200) {
+      try {
+        dynamic object = jsonDecode(response.body);
+        // ignore: unused_local_variable
+        dynamic data = object['lstCartItem'];
+        
+      } catch (e) {
+        //print(e);
+      }
+      /* lstCartItem = lstTmp;
+      total1 = tmpTotal; */
+      //print(lstTmp.length);
+      notifyListeners();
     } else {
       //print('get cart item faild');
     }
   }
 
-  Invoice? iv;
+/*   Invoice? iv;
   gethd(int id) async {
     late Invoice tmp;
     final response = await http.get(
@@ -118,5 +142,5 @@ class InvoiceProvider extends ChangeNotifier {
       {}
     }
     return iv;
-  }
+  } */
 }

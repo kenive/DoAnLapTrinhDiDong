@@ -13,9 +13,6 @@ class _PageDetailState extends State<PageDetail> {
   @override
   Widget build(BuildContext context) {
     var detail = Provider.of<InvoiceProvider>(context, listen: false);
-    //var detail = Provider.of<InvoiceProvider>(context, listen: false);
-    
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.pink[200],
@@ -27,12 +24,9 @@ class _PageDetailState extends State<PageDetail> {
       body: Consumer<InvoiceProvider>(
         
         builder: (context, value, child) {
-          
           return SingleChildScrollView(
-            
             child: Column(
               children: [
-                
                 const SizedBox(
                   height: 40,
                 ),

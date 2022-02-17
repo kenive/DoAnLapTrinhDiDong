@@ -146,6 +146,7 @@ class _TypeState extends State<Type> {
               child: Card(
                 color: Colors.white60,
                 elevation: 10,
+                
                 child: Column(
                   //mainAxisAlignment: MainAxisAlignment.center,
                   //crossAxisAlignment: CrossAxisAlignment.center,

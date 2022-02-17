@@ -23,191 +23,190 @@ class Cart extends State<PageCart> {
     return Scaffold(
         backgroundColor: Colors.pink[50],
         appBar: AppBar(
-          backgroundColor: Colors.pink[400],
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              const Text(
-            'Giỏ Hàng',
-            style: TextStyle(color: Colors.black),),
-            Lottie.network(
-                'https://assets6.lottiefiles.com/private_files/lf30_x2lzmtdl.json',
-                width: 100,
-                height: 100,
-                fit: BoxFit.contain,
-              ),
-          
-
-            ],
-          )
-          /*  leading:IconButton(onPressed: (){
+            backgroundColor: Colors.pink[400],
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                const Text(
+                  'Giỏ Hàng',
+                  style: TextStyle(color: Colors.black),
+                ),
+                Lottie.network(
+                  'https://assets6.lottiefiles.com/private_files/lf30_x2lzmtdl.json',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.contain,
+                ),
+              ],
+            )
+            /*  leading:IconButton(onPressed: (){
             Navigator.pop(context);
             cartprov.resetTotal();
           }, icon:const Icon(Icons.arrow_back_ios)) */
-        ),
+            ),
         body: Consumer<CartProvider>(builder: (_, value, child) {
           return SingleChildScrollView(
             child: Column(
               children: [
+                const SizedBox(height: 15,),
                 Column(
                   children: List.generate(cartprov.lstCartItem.length, (index) {
                     return Container(
-                      height: 130,
+                      height: 140,
                       //width: 60,
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(35.0),
-                          boxShadow: const [
+                          borderRadius: BorderRadius.circular(35),
+                          border: Border.all(width: 0.5,color:Colors.black),
+                          boxShadow:  [
                             BoxShadow(
-                              color: Colors.black26,
-                              offset: Offset(0, 2),
-                              blurRadius: 20.0,
+                              color: Colors.grey.withOpacity(0.5),
+                              offset:const Offset(10, 10),
+                              blurRadius: 20,
                             )
                           ]),
                       margin: const EdgeInsets.all(10),
-                      child: Stack(alignment: Alignment.centerLeft, children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.all(3),
-                              width: 130,
-                              //height: 310,
-                              //color: Colors.red,
-                              decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(30.0),
-                                  bottomLeft: Radius.circular(30.0),
-                                ),
-                                image: DecorationImage(
-                                  image: AssetImage(
-                                      cartprov.lstCartItem[index].image),
-                                  fit: BoxFit.cover,
-                                ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.all(2),
+                            width: 130,
+                            //height: 310,
+                            //color: Colors.red,
+                            decoration: BoxDecoration(
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(30.0),
+                                bottomLeft: Radius.circular(30.0),
+                              ),
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    cartprov.lstCartItem[index].image),
+                                fit: BoxFit.cover,
                               ),
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 10, top: 17),
-                                  child: Text(
-                                    cartprov.lstCartItem[index].name,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18.0,
-                                    ),
-                                    //overflow: TextOverflow.ellipsis,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 10, top: 17),
+                                child: Text(
+                                  cartprov.lstCartItem[index].name,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18.0,
                                   ),
+                                  //overflow: TextOverflow.ellipsis,
                                 ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 10, top: 17),
-                                  child: Text(
-                                    '${cartprov.lstCartItem[index].price.toString()} VNĐ',
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18.0,
-                                    ),
-                                    overflow: TextOverflow.ellipsis,
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 10, top: 17),
+                                child: Text(
+                                  '${cartprov.lstCartItem[index].price.toString()} VNĐ',
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18.0,
                                   ),
-                                ),
-                                Row(
-                                  children: [
-                                    Container(
-                                      height: 30,
-                                      width: 30,
-                                      decoration: BoxDecoration(
-                                        color: Theme.of(context).primaryColor,
-                                        borderRadius: BorderRadius.circular(5),
-                                      ),
-                                      child: Center(
-                                        child: IconButton(
-                                          onPressed: () {
-                                            var acc = id.acc!.id;
-                                            var product = cartprov
-                                                .lstCartItem[index].productid;
-
-                                            if (cartprov.lstCartItem[index]
-                                                    .quantily >
-                                                1) {
-                                              cartprov.truCart(acc, product, 1);
-                                            }
-                                          },
-                                          icon: const Icon(Icons.remove),
-                                          iconSize: 15,
-                                          //splashColor: Colors.grey,
-                                        ),
-                                      ),
-                                      margin: const EdgeInsets.only(
-                                          left: 10, top: 18),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 10, top: 18),
-                                      child: Text(
-                                        cartprov.lstCartItem[index].quantily
-                                            .toString(),
-                                        style: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      height: 30,
-                                      width: 30,
-                                      decoration: BoxDecoration(
-                                        color: Theme.of(context).primaryColor,
-                                        borderRadius: BorderRadius.circular(5),
-                                      ),
-                                      child: Center(
-                                        child: IconButton(
-                                          onPressed: () {
-                                            var id1 = id.acc!.id;
-                                            var pro = cartprov
-                                                .lstCartItem[index].productid;
-
-                                            cartprov.addCart(id1, pro, 1);
-                                          },
-                                          icon: const Icon(Icons.add),
-                                          iconSize: 15,
-                                          //splashColor: Colors.pink[200],
-                                        ),
-                                      ),
-                                      margin: const EdgeInsets.only(
-                                          left: 10, top: 18),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                            Container(
-                              height: 30,
-                              width: 30,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Center(
-                                child: IconButton(
-                                  onPressed: () {
-                                    cartprov.removeCart(
-                                        cartprov.lstCartItem[index].id,
-                                        id.acc!.id);
-                                  },
-                                  icon: const Icon(Icons.delete),
-                                  iconSize: 30,
-                                  splashColor: Colors.pink[200],
-                                  color: Colors.red,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ),
-                              margin: const EdgeInsets.only(left: 20, top: 40),
+                              Row(
+                                children: [
+                                  Container(
+                                    height: 30,
+                                    width: 30,
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context).primaryColor,
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: Center(
+                                      child: IconButton(
+                                        onPressed: () {
+                                          var acc = id.acc!.id;
+                                          var product = cartprov
+                                              .lstCartItem[index].productid;
+
+                                          if (cartprov
+                                                  .lstCartItem[index].quantily >
+                                              1) {
+                                            cartprov.truCart(acc, product, 1);
+                                          }
+                                        },
+                                        icon: const Icon(Icons.remove),
+                                        iconSize: 15,
+                                        //splashColor: Colors.grey,
+                                      ),
+                                    ),
+                                    margin: const EdgeInsets.only(
+                                        left: 10, top: 18),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 10, top: 18),
+                                    child: Text(
+                                      cartprov.lstCartItem[index].quantily
+                                          .toString(),
+                                      style: const TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 30,
+                                    width: 30,
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context).primaryColor,
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: Center(
+                                      child: IconButton(
+                                        onPressed: () {
+                                          var id1 = id.acc!.id;
+                                          var pro = cartprov
+                                              .lstCartItem[index].productid;
+
+                                          cartprov.addCart(id1, pro, 1);
+                                        },
+                                        icon: const Icon(Icons.add),
+                                        iconSize: 15,
+                                        //splashColor: Colors.pink[200],
+                                      ),
+                                    ),
+                                    margin: const EdgeInsets.only(
+                                        left: 10, top: 18),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                          Container(
+                            height: 30,
+                            width: 30,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5),
                             ),
-                          ],
-                        ),
-                      ]),
+                            child: Center(
+                              child: IconButton(
+                                onPressed: () {
+                                  cartprov.removeCart(
+                                      cartprov.lstCartItem[index].id,
+                                      id.acc!.id);
+                                },
+                                icon: const Icon(Icons.delete),
+                                iconSize: 30,
+                                splashColor: Colors.pink[200],
+                                color: Colors.red,
+                              ),
+                            ),
+                            margin: const EdgeInsets.only(left: 20, top: 40),
+                          ),
+                        ],
+                      ),
                     );
                   }),
                 ),
@@ -280,11 +279,9 @@ class Cart extends State<PageCart> {
                             ],
                           );
                         });
-                  }else{
+                  } else {
                     Navigator.pushNamed(context, 'pay');
-
                   }
-                  
                 },
                 child: const Text(
                   'Mua ngay',

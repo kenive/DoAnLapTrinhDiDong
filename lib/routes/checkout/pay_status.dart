@@ -33,7 +33,7 @@ class _PageStatusState extends State<PageStatus>
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'KEN SHOP',
+              'LOVE WINS',
               style: TextStyle(
                 //color: Colors.pink,
                 fontSize: 30,
@@ -84,7 +84,7 @@ class _PageStatusState extends State<PageStatus>
                 onPressed: () {
                   Navigator.pushNamed(context, '/second');
                 },
-                child: const Text('Về Home', style: TextStyle(fontSize: 20))),
+                child: const Text('Mua Tiếp', style: TextStyle(fontSize: 20))),
             const SizedBox(
               height: 30,
             ),

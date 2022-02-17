@@ -11,7 +11,7 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  TextEditingController cc = TextEditingController();
+  TextEditingController search = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,29 +23,28 @@ class _SearchScreenState extends State<SearchScreen> {
         automaticallyImplyLeading: false,
         title: Container(
           decoration: BoxDecoration(
-              color: Colors.pink.shade100,
-              borderRadius: BorderRadius.circular(30),
-               border: Border.all(
-                   width: 1,
-                color: Colors.black,
-                ),
-             ),
+            color: Colors.pink.shade100,
+            borderRadius: BorderRadius.circular(30),
+            border: Border.all(
+              width: 1,
+              color: Colors.black,
+            ),
+          ),
           child: TextField(
             keyboardType: TextInputType.text,
-            controller: cc,
+            controller: search,
             onChanged: (value) {
-              value = cc.text;
+              value = search.text;
               if (value != "") {
                 prods.search(value);
               }
             },
             decoration: InputDecoration(
-              
               enabledBorder: InputBorder.none,
               focusedBorder: InputBorder.none,
               contentPadding: const EdgeInsets.only(top: 14),
               border: const OutlineInputBorder(),
-              
+
               prefixIcon: IconButton(
                 icon: const Icon(
                   Icons.search,
@@ -61,32 +60,32 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
         actions: [
           Container(
-              width: 60,
-              height: 60,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                color: Colors.red,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    offset: const Offset(3, 3),
-                    blurRadius: 4,
-                    spreadRadius: 1,
-                  )
-                ],
-              ),
-              child: IconButton(
-                icon: const Icon(
-                  Icons.shopping_cart,
-                ),
-                iconSize: 25,
-                color: Colors.white,
-                splashColor: Colors.pink,
-                onPressed: () {
-                  Navigator.pushNamed(context, '/cart');
-                },
-              ),
+            width: 60,
+            height: 60,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: Colors.red,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  offset: const Offset(3, 3),
+                  blurRadius: 4,
+                  spreadRadius: 1,
+                )
+              ],
             ),
+            child: IconButton(
+              icon: const Icon(
+                Icons.shopping_cart,
+              ),
+              iconSize: 25,
+              color: Colors.white,
+              splashColor: Colors.pink,
+              onPressed: () {
+                Navigator.pushNamed(context, '/cart');
+              },
+            ),
+          ),
         ],
       ),
       body: Consumer<SearchApi>(
@@ -96,6 +95,7 @@ class _SearchScreenState extends State<SearchScreen> {
             child: Center(
               child: Column(
                 children: [
+                  const SizedBox(height: 10,),
                   Wrap(
                     direction: Axis.horizontal,
                     children: List.generate(prods.datasearch.length, (index) {
@@ -107,77 +107,75 @@ class _SearchScreenState extends State<SearchScreen> {
                                   builder: (_) => PageDetail(
                                       product: prods.datasearch[index])));
                         },
-                        child: 
-                        Hero(
+                        child: Hero(
                           tag: prods.datasearch[index].id.toString(),
-                          child:Container(
-                          margin: const EdgeInsets.all(5),
-                          height: 270,
-                          width: 190,
-                         
-                          decoration:BoxDecoration(
-                             color: Colors.pink[50],
-                             border: Border.all(
-                               width: 0.5,
-                               color: Colors.black
-                             ),
-                             boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      offset: const Offset(1, 3),
-                                      blurRadius: 4,
-                                      spreadRadius: 1,
-                                    )
-                                  ],
-
-                          ) ,
-                          child: Column(
-                            children: [
-                              const SizedBox(height: 10,),
-                              Container(
-                                margin: const EdgeInsets.all(5),
-                                width: 160,
-                                height: 160,
-                                decoration: BoxDecoration(
+                          child: Container(
+                            margin: const EdgeInsets.all(5),
+                            height: 270,
+                            width: 190,
+                            decoration: BoxDecoration(
+                              color: Colors.pink[50],
+                              border:
+                                  Border.all(width: 0.5, color: Colors.black),
                                   borderRadius: BorderRadius.circular(10),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      offset: const Offset(1, 3),
-                                      blurRadius: 4,
-                                      spreadRadius: 1,
-                                    )
-                                  ],
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                        prods.datasearch[index].imageUrl),
-                                    fit: BoxFit.cover,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  offset: const Offset(1, 3),
+                                  blurRadius: 4,
+                                  spreadRadius: 1,
+                                )
+                              ],
+                            ),
+                            child: Column(
+                              children: [
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  margin: const EdgeInsets.all(5),
+                                  width: 160,
+                                  height: 160,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.5),
+                                        offset: const Offset(1, 3),
+                                        blurRadius: 4,
+                                        spreadRadius: 1,
+                                      )
+                                    ],
+                                    image: DecorationImage(
+                                      image: AssetImage(
+                                          prods.datasearch[index].imageUrl),
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(height: 20),
-                              Text(
-                                prods.datasearch[index].name,
-                                style: const TextStyle(
-                                  fontFamily: 'Times New Roman',
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.pink,
+                                const SizedBox(height: 20),
+                                Text(
+                                  prods.datasearch[index].name,
+                                  style: const TextStyle(
+                                    fontFamily: 'Times New Roman',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.pink,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(height: 20),
-                              Text(
-                                'Giá: ${prods.datasearch[index].price} VNĐ',
-                                style: const TextStyle(
-                                  fontFamily: 'Times New Roman',
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.pink,
+                                const SizedBox(height: 20),
+                                Text(
+                                  'Giá: ${prods.datasearch[index].price} VNĐ',
+                                  style: const TextStyle(
+                                    fontFamily: 'Times New Roman',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.pink,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ) ,
                         ),
                       );
                     }),

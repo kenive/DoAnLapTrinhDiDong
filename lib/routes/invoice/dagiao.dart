@@ -25,8 +25,7 @@ class _PageDaGiaoState extends State<PageDaGiao> {
                 children: List.generate(lstinvoi.lstInvoise.length, (index) {
                   return InkWell(
                     onTap: (){
-                      lstinvoi.getItemCart(lstinvoi.lstInvoise[index].id);
-                      lstinvoi.gethd(lstinvoi.lstInvoise[index].id);
+                      lstinvoi.getItem(lstinvoi.lstInvoise[index].id);
                       Navigator.pushNamed(context, 'detail');
 
                     },
