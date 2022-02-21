@@ -256,11 +256,11 @@ class _PagePayState extends State<PagePay> {
                             ]),
 
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
                               width: 120,
-                              height: 120,
+                              height: 125,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 image: DecorationImage(
@@ -269,7 +269,7 @@ class _PagePayState extends State<PagePay> {
                                   fit: BoxFit.cover,
                                 ),
                               ),
-                              //margin: const EdgeInsets.only(left: 5),
+                              margin: const EdgeInsets.only(left: 3),
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -420,6 +420,9 @@ class _PagePayState extends State<PagePay> {
                 } else {
                   invoi.invoice(cart.name1, cart.address1, cart.phone1,
                       cart.total1.toDouble(), acc.acc!.id, 1);
+                      cart.name1="";
+                      cart.address1="";
+                      cart.phone1="";
                   Navigator.pushNamed(context, 'paystatus');
                 }
               },

@@ -1,7 +1,7 @@
 import 'package:doan_mobile/routes/provider/providersearch.dart';
 import 'package:doan_mobile/routes/product/product_detail.dart';
 import 'package:doan_mobile/routes/provider/providerproduct.dart';
-import 'package:flutter/cupertino.dart';
+//import 'package:flutter/cupertino.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';

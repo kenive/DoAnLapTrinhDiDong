@@ -4,7 +4,7 @@
 
 
 
-import 'package:flutter/cupertino.dart';
+//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 var appBar2 = AppBar(
       backgroundColor: Colors.pink.shade300,
@@ -61,12 +61,12 @@ Widget bottomNavigationBar2 = BottomNavigationBar(
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
           // ignore: deprecated_member_use
-          title: Text('Home'),
+          label: 'Home',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
           // ignore: deprecated_member_use
-          title: Text('Tôi'),
+          label: 'Tôi',
           
         ),
       ],

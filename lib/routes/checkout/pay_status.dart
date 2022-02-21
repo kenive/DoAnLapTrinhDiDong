@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/animation.dart';
+//import 'package:flutter/animation.dart';
 import 'package:lottie/lottie.dart';
 
 class PageStatus extends StatefulWidget {

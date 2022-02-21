@@ -109,6 +109,7 @@ class Detail extends State<PageDetail> {
             decoration: BoxDecoration(
                 color: Colors.pink[100],
                 borderRadius: BorderRadius.circular(10),
+                border: Border.all(width: 0.5,color:Colors.black),
                 boxShadow: [boxShadow2]),
             height: 30,
             width: 30,
